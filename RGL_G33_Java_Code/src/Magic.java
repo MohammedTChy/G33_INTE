@@ -1,4 +1,4 @@
 public class Magic {
 
-    private int mana;
+    private int mana ;
 }
