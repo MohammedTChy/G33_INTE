@@ -5,6 +5,7 @@ public class Magic {
 
    public Magic (){
        this(100);
+
    }
 
     public Magic (int mana){
