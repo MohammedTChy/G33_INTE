@@ -1,4 +1,4 @@
 public class map {
-    private int x;
+    private int x,y;
 
 }
