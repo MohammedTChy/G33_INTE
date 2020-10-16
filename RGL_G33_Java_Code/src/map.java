@@ -1,5 +1,5 @@
 public class map {
-    private int x,y;
+    private int x,y,kkkkk;
 
 
 }

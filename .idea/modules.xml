@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/G33_INTE.iml" filepath="$PROJECT_DIR$/.idea/G33_INTE.iml" />
-      <module fileurl="file://$PROJECT_DIR$/RGL_G33_Maven/RGL_G33.iml" filepath="$PROJECT_DIR$/RGL_G33_Maven/RGL_G33.iml" />
       <module fileurl="file://$PROJECT_DIR$/RGL_G33_Java_Code/RGL_G33_Java_Code.iml" filepath="$PROJECT_DIR$/RGL_G33_Java_Code/RGL_G33_Java_Code.iml" />
     </modules>
   </component>
