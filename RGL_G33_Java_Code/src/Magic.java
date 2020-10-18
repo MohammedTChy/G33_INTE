@@ -10,13 +10,11 @@ public class Magic {
     private int damage;
 
 
-
-
-
-    public Magic (String name, int manaCost, int damage){
+    public Magic(String name, int manaCost, int damage) {
         this.name = name;
         this.manaCost = manaCost;
         this.damage = damage;
+
 
     }
 
@@ -38,6 +36,6 @@ public class Magic {
 
     @Override
     public String toString() {
-        return "Name = " + getName() + ", ManaCost = " + getManaCost() + ", Damage = "+getDamage();
+        return "Name = " + getName() + ", ManaCost = " + getManaCost() + ", Damage = " + getDamage();
     }
 }

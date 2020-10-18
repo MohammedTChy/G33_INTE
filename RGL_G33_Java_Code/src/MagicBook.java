@@ -12,15 +12,15 @@ public class MagicBook {
         return magicBook;
     }
 
-    public void addMagicBook (String name, int manaCost, int damage)
-    {
+    public void addMagicBook(String name, int manaCost, int damage) {
         magicBook.add(new Magic(name, manaCost, damage));
 
 
     }
 
-    public void printOutArrayList(){
-         System.out.println(getMagicBook());
+
+    public void printOutArrayList() {
+        System.out.println(getMagicBook());
     }
 
 }

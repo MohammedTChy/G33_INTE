@@ -9,8 +9,8 @@ class MagicBookTest {
     @Test
     void testingToPutInMagicBook(){
         MagicBook m = new MagicBook();
-        m.addMagicBook("Fire", 10, 10);
-        m.addMagicBook("Aire", 10, 10);
+        m.addMagicBook("Fire", 10, 15);
+        m.addMagicBook("Air", 8, 12);
         m.printOutArrayList();
 
 
