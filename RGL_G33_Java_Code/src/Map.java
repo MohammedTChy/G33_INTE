@@ -1,14 +1,17 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+
 public class Map {
 
     private int width;
     private int breadth;
-    private Tile rectangle;
+    HashSet<Position>checkPosition=new HashSet<>();
+    private ArrayList<Tile> tiles=new ArrayList<>();
 
-
-    public Map(int width, int breadth,Tile rectangle) {
+    public Map(int width, int breadth) {
         this.width = width;
         this.breadth = breadth;
-        this.rectangle=rectangle;
     }
 
     public int getWidth() {
@@ -17,5 +20,15 @@ public class Map {
 
     public int getBreadth() {
         return breadth;
+    }
+
+    void addTile(Tile tile){
+        System.out.println(checkPosition.contains(tile.getCoordinate()));
+        if(checkPosition.contains(tile.getCoordinate())==true){
+            System.out.println("here");
+            throw new IllegalArgumentException("This position is occupied");
+        }
+        checkPosition.add(tile.getCoordinate());
+        tiles.add(tile);
     }
 }
