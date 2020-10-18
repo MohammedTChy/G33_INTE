@@ -1,6 +1,6 @@
 public class Item {
 
-    public enum PotionType{
+    public enum PotionType {
         Health_Potion, Mana_Potion
     }
 
@@ -8,7 +8,7 @@ public class Item {
     private final PotionType potionType;
     private int potionAmmount;
 
-    public Item (String name, PotionType potionType, int potionAmmount){
+    public Item(String name, PotionType potionType, int potionAmmount) {
         this.name = name;
         this.potionType = potionType;
         this.potionAmmount = potionAmmount;
@@ -27,8 +27,8 @@ public class Item {
     }
 
     //Potion interaktion, inte nöjd men en början, har ej fixat mana då den inte finns med
-    public void usePotion(Player player, Item item){
-        if(item.potionType.equals("Health_Potion")){
+    public void usePotion(Player player, Item item) {
+        if (item.potionType.equals("Health_Potion")) {
             int hP = player.getHitPoints();
             int restoreHp = item.getPotionAmmount();
             int addHp = hP + restoreHp;
