@@ -38,6 +38,6 @@ public class Magic {
 
     @Override
     public String toString() {
-        return "Magic Name=" + getName() + ", ManaCost=" + getManaCost() + ", Damage="+getDamage();
+        return "Name = " + getName() + ", ManaCost = " + getManaCost() + ", Damage = "+getDamage();
     }
 }
