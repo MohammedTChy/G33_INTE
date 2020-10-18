@@ -9,6 +9,7 @@ public class Magic {
     private String name;
     //Valde list för det kanske skulle vara enklare och simpelt, fick tips att försöka med list
     private List<Magic> magicBook;
+    private int damge;
 
 
     public Magic (String name, int manaAmmount){
