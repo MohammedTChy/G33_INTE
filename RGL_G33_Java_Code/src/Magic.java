@@ -5,44 +5,39 @@ import java.util.List;
 public class Magic {
 
     private int mana;
-    private int manaAmmount;
+    private int manaCost;
     private String name;
-    //Valde list för det kanske skulle vara enklare och simpelt, fick tips att försöka med list
-    private List<Magic> magicBook;
+    private int damage;
 
 
 
-    public Magic (String name, int manaAmmount){
+
+
+    public Magic (String name, int manaCost, int damage){
         this.name = name;
-        this.manaAmmount = manaAmmount;
+        this.manaCost = manaCost;
+        this.damage = damage;
+
     }
 
+    public int getDamage() {
+        return damage;
+    }
 
     public int getMana() {
         return mana;
     }
 
-    public int getManaAmmount() {
-        return manaAmmount;
+    public int getManaCost() {
+        return manaCost;
     }
 
     public String getName() {
         return name;
     }
 
-    public List<Magic> getMagicBook() {
-        return magicBook;
+    @Override
+    public String toString() {
+        return "Magic Name=" + getName() + ", ManaCost=" + getManaCost() + ", Damage="+getDamage();
     }
-
-
-    public void addMagicBook (String name, int manaAmmount)
-   {
-       magicBook.add(new Magic(name, manaAmmount));
-   }
-
-
-
-
-
-
 }
