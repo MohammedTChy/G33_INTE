@@ -2,7 +2,6 @@
 public class Combat {
 	
 	private man player; //should be player later
-	// A player object is probably more complex and has a man object within
 	private man monster;
 	private boolean playerTurn;
 	private boolean activeCombat;
