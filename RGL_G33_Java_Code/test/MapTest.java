@@ -1,9 +1,12 @@
+
 import com.intellij.internal.statistic.beans.StatisticsEventProvider;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class MapTest {
+
 
     // TEST TYPE Unit test
     @Test
