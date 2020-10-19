@@ -32,9 +32,18 @@ class ItemTest {
     }
 
     @Test
-    void toStringFormatForHealthPotion(){
+    void addingHealthToAplaterWithPotionButEmptyingTheAmmountToZero() {
+        Man m = new Man("Boromir", Man.ManType.WARRIOR);
+        Item p = new Item("Health", 500);
+        p.usePotion(m, p);
+        assertEquals(0, p.getPotionAmmount());
+    }
+
+    @Test
+    void toStringFormatForHealthPotion() {
         Item p = new Item("Health", 550);
         assertEquals("This is a Health Potion, with the amount 550", p.toString());
     }
+
 
 }
