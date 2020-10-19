@@ -9,34 +9,33 @@ public class Tile {
     private boolean life;
 
     public Tile(Position coordinate, boolean fire, boolean hills, boolean jangle, boolean enemy, boolean empty, boolean level, boolean life) {
-        if (fire == true){
-            this.fire=true;
-            this.hills=this.jangle=this.enemy=this.empty=this.level=this.life=false;
-        } else if(hills==true) {
-            this.hills=true;
-            this.fire=this.jangle=this.enemy=this.empty=this.level=this.life=false;
-        }else if(jangle==true){
-            this.jangle=true;
-            this.fire=this.hills=this.enemy=this.empty=this.level=this.life=false;
-        }else if(enemy==true){
-            this.enemy=true;
-            this.fire=this.hills=this.jangle=this.empty=this.level=this.life=false;
-        } else if(empty==true){
-            this.empty=true;
-            this.fire=this.hills=this.jangle=this.enemy=this.level=this.life=false;
-        }  else if(level==true){
-            this.level=true;
-            this.fire=this.hills=this.jangle=this.enemy=this.empty=this.life=false;
-        }else if(life==true){
-            this.life=true;
-            this.fire=this.hills=this.jangle=this.enemy=this.empty=this.level=false;
-        }
+        if(checkIfOnlyIsTrue(fire, hills, jangle, enemy, empty, level, life)==false)
+            throw new IllegalArgumentException("Cant place two item in same tiles");
+        this.fire=fire;
+        this.hills=hills;
+        this.jangle=jangle;
+        this.enemy=enemy;
+        this.empty=empty;
+        this.level=level;
+        this.life=life;
+        this.coordinate=coordinate;
     }
     public Tile(Position position)
     {
         this(position,false,false,false,false,true,false,false);
     }
 
+    boolean checkIfOnlyIsTrue(boolean fire, boolean hills, boolean jangle, boolean enemy, boolean empty, boolean level, boolean life)
+    {
+        if(fire && !hills && !jangle && !enemy && !empty && !level && !life) return true;
+        if(!fire && hills && !jangle && !enemy && !empty && !level && !life) return true;
+        if(!fire && !hills && jangle && !enemy && !empty && !level && !life) return true;
+        if(!fire && !hills && !jangle && enemy && !empty && !level && !life) return true;
+        if(!fire && !hills && !jangle && !enemy && empty && !level && !life) return true;
+        if(!fire && !hills && !jangle && !enemy && !empty && level && !life) return true;
+        if(!fire && !hills && !jangle && !enemy && !empty && !level && life) return true;
+        return false;
+    }
 
     public boolean isFire() {
         return fire;
