@@ -22,15 +22,13 @@ public class Position {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Position that = (Position) o;
-        return x == that.getX() &&
-                y == that.getY();
+        Position position = (Position) o;
+        return x == position.x &&
+                y == position.y;
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(x, y);
     }
-
-
 }

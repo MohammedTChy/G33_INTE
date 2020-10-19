@@ -23,13 +23,13 @@ class MapTest {
         assertEquals(map.getBreadth(),14);
     }
     // TEST TYPE TDD(test driven dev)
-    @Test
-    void PositionTest(){
+    @Test// in this test we dont want more then one tile can be placed in the same position,
+    // so we have make a hash set to check if one object is already there, we have to creat an IAE.
+    void SamePositionTest(){
         Map map=new Map(10,10);
         map.addTile(new Tile(new Position(5,5)));
-        map.addTile(new Tile(new Position(5,15)));
         assertThrows(IllegalArgumentException.class, () -> {
-            map.addTile(new Tile(new Position(5,10)));
+            map.addTile(new Tile(new Position(5,5)));
         });
 
     }

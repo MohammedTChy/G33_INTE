@@ -31,6 +31,7 @@ public class Tile {
             this.life=true;
             this.fire=this.hills=this.jangle=this.enemy=this.empty=this.level=false;
         }
+        this.coordinate=coordinate;
     }
     public Tile(Position position)
     {

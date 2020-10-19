@@ -25,7 +25,6 @@ public class Map {
     void addTile(Tile tile){
         System.out.println(checkPosition.contains(tile.getCoordinate()));
         if(checkPosition.contains(tile.getCoordinate())==true){
-            System.out.println("here");
             throw new IllegalArgumentException("This position is occupied");
         }
         checkPosition.add(tile.getCoordinate());
