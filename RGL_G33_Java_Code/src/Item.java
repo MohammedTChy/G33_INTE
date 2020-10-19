@@ -10,13 +10,12 @@ public class Item {
     private int potionAmmount;
 
     public Item(String potionType, int potionAmmount) {
-        if(potionAmmount < 0){
+        if (potionAmmount < 0) {
             throw new IllegalArgumentException("Potion ammount must be 0 or higher" + potionAmmount);
         }
         this.potionType = potionType;
         this.potionAmmount = potionAmmount;
     }
-
 
 
     public String getPotionType() {
@@ -40,6 +39,6 @@ public class Item {
 
     @Override
     public String toString() {
-        return "This is a  " + getPotionType() + " Potion, with the ammount "+ getPotionAmmount();
+        return "This is a " + getPotionType() + " Potion, with the amount " + getPotionAmmount();
     }
 }
