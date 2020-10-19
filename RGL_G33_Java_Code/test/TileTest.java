@@ -17,8 +17,6 @@ class TileTest {
         assertFalse(tile1.isLevel());
         assertFalse(tile1.isLife());
     }
-
-
     @Test
     void HillsExistence(){
         Tile tile1=new Tile(new Position(0,0),false,true,false,false,false,false,false);
@@ -41,8 +39,6 @@ class TileTest {
         assertEquals(tile1.isLevel(),false);
         assertEquals(tile1.isLife(),false);
     }
-
-
     @Test
     void EnemyExistence(){
         Tile tile1=new Tile(new Position(0,0),false,false,false,true,false,false,false);
@@ -54,7 +50,6 @@ class TileTest {
         assertEquals(tile1.isLevel(),false);
         assertEquals(tile1.isLife(),false);
     }
-
     @Test
     void EmptyPlaceCheck(){
         Tile tile1=new Tile(new Position(0,0),false,false,false,false,true,false,false);
@@ -91,6 +86,11 @@ class TileTest {
     }
 
     // TEST TYPE TDD(test driven dev)
-
+    @Test
+    void IftwoElementIsTrue(){
+        assertThrows(IllegalArgumentException.class, () -> {
+            Tile tile = new Tile(new Position(0, 0), true, true, false, false, false, false, false);
+        });
+    }
 
 }

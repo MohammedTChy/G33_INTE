@@ -23,7 +23,11 @@ public class Map {
     }
 
     void addTile(Tile tile){
-        System.out.println(checkPosition.contains(tile.getCoordinate()));
+        if(tile.getCoordinate().getX()>width) throw new IllegalArgumentException("Tile out of boundary in x");
+        if(tile.getCoordinate().getY()>breadth) throw new IllegalArgumentException("Tile out of boundary in y");
+        if(tile.getCoordinate().getX()<0) throw new IllegalArgumentException("x cant be negetive");
+        if(tile.getCoordinate().getY()<0) throw new IllegalArgumentException("y cant be negetive");
+        //if(checkIfOnlyIsTrue(tile)==false)
         if(checkPosition.contains(tile.getCoordinate())==true){
             throw new IllegalArgumentException("This position is occupied");
         }
