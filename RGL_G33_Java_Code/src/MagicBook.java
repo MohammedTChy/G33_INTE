@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MagicBook {
@@ -19,8 +20,10 @@ public class MagicBook {
     }
 
 
+    //Primitivt sätt att kolla vad som finns i magicbook, behöver bättre lösning
     public void printOutArrayList() {
         System.out.println(getMagicBook());
     }
+
 
 }
