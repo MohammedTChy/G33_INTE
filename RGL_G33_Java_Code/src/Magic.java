@@ -12,7 +12,7 @@ public class Magic {
 
     public Magic(String name, int manaCost, int damage) {
         if (manaCost < 0 || damage < 0) {
-            throw new IllegalStateException("Must have a name, manacost/damage must be either 0 or above");
+            throw new IllegalArgumentException("Must have a name, manacost/damage must be either 0 or above");
             //Might need to seperate out each variable, anything below zero is not accepted,
         }
         this.name = name;

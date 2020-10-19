@@ -25,14 +25,14 @@ class MagicTest {
 
     @Test
     void manaCostThrowIAENegativeOne() {
-        assertThrows(IllegalStateException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Magic("Flash", -1, 0);
         });
     }
 
     @Test
     void damageThrowIAENegativeOne() {
-        assertThrows(IllegalStateException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             new Magic("Flash", 0, -1);
         });
     }
