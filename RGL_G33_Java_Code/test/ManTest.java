@@ -25,13 +25,15 @@ class ManTest {
         assertEquals( "HP less than 0", e.getMessage());
     }
 
-//    Need to figure out how to write this one
-//    @Test
-//    void setNegativeHitPointsThrowsIAE() {
-//        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
-//           new Magician(2000,200,92, 40);
-//        });
-//    }
+   //Need to figure out how to write this one
+    //Hope this works ~Tahmid
+    @Test
+    void setNegativeHitPointsThrowsIAE() {
+        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
+         Man m = new Man(-500,200,92);
+         m.setHitPoints(-2555);
+      });
+    }
 
     @Test
     void testGetAttackPower() {
