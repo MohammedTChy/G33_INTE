@@ -21,7 +21,7 @@ public abstract class Creature {
     }
 
     private void checkHitPointsNotBelowZero(int hitPoints) {
-        if (hitPoints<0){
+        if (hitPoints < 0) {
             throw new IllegalArgumentException("HP less than 0");
         }
     }
@@ -29,6 +29,7 @@ public abstract class Creature {
     public int getAttackPower() {
         return attackPower;
     }
+
     public int getDefensePower() {
         return defensePower;
     }
