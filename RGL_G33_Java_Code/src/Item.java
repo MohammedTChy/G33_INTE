@@ -37,7 +37,7 @@ public class Item {
 
     //Potion interaktion, inte nöjd men en början, har ej fixat mana då den inte finns med
     //Idéen är att den kollar vilken typ av potion det är, tar den potion och adderar upp, kollar ej limit, då det finns inte för tilfället med att lägga det.
-    public void usePotion(Player p, Item i) {
+    public void usePotion(Creature p, Item i) {
         if (i.potionType.equals("Health")) {
             int hP = p.getHitPoints();
             int restoreHp = i.getPotionAmmount();

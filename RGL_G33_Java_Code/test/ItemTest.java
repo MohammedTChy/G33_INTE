@@ -25,7 +25,7 @@ class ItemTest {
 
     @Test
     void addingHealthToAPlayerWithPotion() {
-        Man m = new Man("Boromir", Man.ManType.WARRIOR);
+        Man m = new Man(2000,200,92);
         Item p = new Item("Health", 500);
         p.usePotion(m, p);
         assertEquals(2500, m.getHitPoints());
@@ -33,7 +33,7 @@ class ItemTest {
 
     @Test
     void addingHealthToAplaterWithPotionButEmptyingTheAmmountToZero() {
-        Man m = new Man("Boromir", Man.ManType.WARRIOR);
+        Man m = new Man(2000,200,92);
         Item p = new Item("Health", 500);
         p.usePotion(m, p);
         assertEquals(0, p.getPotionAmmount());
