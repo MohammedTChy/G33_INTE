@@ -1,24 +1,17 @@
-public class Man extends Player {
+public class Man extends Creature {
 
-    public enum ManType {
-        MEDIC, WARRIOR;
+    private int mana = 0;
+    public Man(int hitPoints, int attackPower, int defensePower) {
+        super(hitPoints, attackPower, defensePower);
     }
 
-    private ManType manType;
-
-    public Man(String name, ManType manType) {
-        super(name);
-        super.setHitPoints(2000);
-        this.manType = manType;
-    }
-
-    public ManType getManType() {
-        return manType;
+    public int getMana() {
+        return mana;
     }
 
     @Override
     public String toString() {
-        return "Name: " + getName() +
-                ", Type: " + manType;
+        return "HP: " + getHitPoints() +
+                ", Attack: " + getAttackPower() + ", Defense: " + getDefensePower();
     }
 }
