@@ -45,5 +45,20 @@ class ItemTest {
         assertEquals("This is a Health Potion, with the amount 550", p.toString());
     }
 
+    @Test
+    void setPotionAmmountToANewAmmount() {
+        Item p = new Item("Health", 550);
+        p.setPotionAmmount(800);
+        assertEquals(800, p.getPotionAmmount());
+    }
+
+    @Test
+    void setPotionAmmountToBelowZeroAutoAdjustToZero() {
+        Item p = new Item("Health", 550);
+        p.setPotionAmmount(-20);
+        assertEquals(0, p.getPotionAmmount());
+
+    }
+
 
 }

@@ -50,5 +50,33 @@ class MagicTest {
 
     }
 
+    @Test
+    void setManaCostToANewCost(){
+        Magic m = new Magic("Water", 5, 5);
+        m.setManaCost(2);
+        assertEquals(2, m.getManaCost());
+    }
+
+    @Test
+    void setManaCostToBelowZeroAndCheckIfItAutoAdjustToZero(){
+        Magic m = new Magic("Water", 5, 5);
+        m.setManaCost(-2);
+        assertEquals(0, m.getManaCost());
+    }
+
+    @Test
+    void setDamageToANewDamageOutput(){
+        Magic m = new Magic("Thunderbolt", 10,5);
+        m.setDamage(12);
+        assertEquals(12, m.getDamage());
+    }
+
+    @Test
+    void setDamageBelowZeroAutoAdjustFixItToZero(){
+        Magic m = new Magic("Thunderbolt", 10,5);
+        m.setDamage(-5);
+        assertEquals(0, m.getDamage());
+    }
+
 
 }

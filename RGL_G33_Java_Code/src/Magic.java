@@ -38,13 +38,19 @@ public class Magic {
 
     //Ras, klass och special item kan påverka manacost
     public void setManaCost(int manaCost) {
+        if (manaCost < 0) {
+            manaCost = 0;
+        }//Auto adjust manaCost to zero if it drops below zero because of skills/ability/items
         this.manaCost = manaCost;
     }
 
     //Ras, klass och special item kan påverka damagae
     public void setDamage(int damage) {
+        if(damage < 0 ){
+            damage = 0;
+        }//Auto adjust damage to zero if it drops below zero because of skills/ability/items
         this.damage = damage;
-    }
+    }//Maybe change from zero to 1 damage, but thats for later if neeeded
 
     //name of the spell
     public String getName() {
