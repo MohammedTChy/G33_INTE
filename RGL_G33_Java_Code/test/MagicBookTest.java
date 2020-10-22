@@ -2,19 +2,15 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
 class MagicBookTest {
 
-
-    //behöver Göra om testet, behöver idéer om hur jag ska göra det
     @Test
-    void testingToPutInMagicBookAndSeeifItExistIntheArrayByPrintingItOut() {
+    void testCheckIfMagicBookExistsInArray() {
         MagicBook m = new MagicBook();
         m.addMagicBook("Fire", 10, 15);
         m.addMagicBook("Air", 8, 12);
         assertEquals("Name = Fire, ManaCost = 10, Damage = 15, Name = Air, ManaCost = 8, Damage = 12, ", m.printOutArrayList());
         //NOTE at every entry in the Arraylist is added with ", " with the space at the end of the entry, rememeber that
-
 
     }
 

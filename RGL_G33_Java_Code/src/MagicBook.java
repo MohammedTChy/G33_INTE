@@ -4,9 +4,8 @@ import java.util.List;
 
 public class MagicBook {
 
-    //Funderar på att göra det till en static list
-
-    //Arraylist fungerar också
+    //using new List<>() works too, decied to go with ArrayList though
+    //added static Magic before hand is possible, did not do it mainly because of not needed to yet
     private List<Magic> magicBook = new ArrayList<>();
 
     public List<Magic> getMagicBook() {
@@ -19,12 +18,11 @@ public class MagicBook {
 
     }
 
-
     //Primitivt sätt att kolla vad som finns i magicbook, behöver bättre lösning
     public String printOutArrayList() {
         StringBuffer sb = new StringBuffer();
-        for (Magic s : magicBook) {
-            sb.append(s);
+        for (Magic print : magicBook) {
+            sb.append(print);
             sb.append(", ");
             //NOTE at every entry in the Arraylist is added with ", " with the space at the end of the entry, rememeber that
         }
