@@ -21,8 +21,14 @@ public class MagicBook {
 
 
     //Primitivt sätt att kolla vad som finns i magicbook, behöver bättre lösning
-    public void printOutArrayList() {
-        System.out.println(getMagicBook());
+    public String printOutArrayList() {
+        StringBuffer sb = new StringBuffer();
+        for (Magic s : magicBook) {
+            sb.append(s);
+            sb.append(", ");
+            //NOTE at every entry in the Arraylist is added with ", " with the space at the end of the entry, rememeber that
+        }
+        return sb.toString();
     }
 
 
