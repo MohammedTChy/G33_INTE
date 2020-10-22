@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MagicTest {
 
-
     @Test
     void getMethodTestTheNameOfTheMagic() {
         Magic m = new Magic("Fireball", 10, 5);
