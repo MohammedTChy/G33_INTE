@@ -9,7 +9,7 @@ public class Tile {
     private boolean life;
 
     public Tile(Position coordinate, boolean fire, boolean hills, boolean jangle, boolean enemy, boolean empty, boolean level, boolean life) {
-        if(checkIfOnlyIsTrue(fire, hills, jangle, enemy, empty, level, life)==false)
+        if(!checkIfOnlyIsTrue(fire, hills, jangle, enemy, empty, level, life))
             throw new IllegalArgumentException("Cant place two item in same tiles");
         this.fire=fire;
         this.hills=hills;

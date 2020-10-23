@@ -1,14 +1,21 @@
 public class Man extends Creature {
 
     private int mana = 0;
-    private Position mansPosition;
-    public Man(int hitPoints, int attackPower, int defensePower,Position mansPosition) {
+    private Position mansPosition;//plz dont chng it change this method, it was created to interact with map.
+    public Man(int hitPoints, int attackPower, int defensePower) {
         super(hitPoints, attackPower, defensePower);
-        this.mansPosition=mansPosition;
     }
 
     public int getMana() {
         return mana;
+    }
+
+    public Position getMansPosition() {  // plz dont chng it change this method, it was created to interact with map.
+        return mansPosition;
+    }
+
+    public void setMansPosition(Position mansPosition) {//plz dont chng it change this method, it was created to interact with map.
+        this.mansPosition = mansPosition;
     }
 
     @Override

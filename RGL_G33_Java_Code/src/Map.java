@@ -46,7 +46,7 @@ public class Map {
         }else if (direction==3){
             newPosition=new Position(position.getX()+1,position.getY());
         }else {
-            newPosition=new Position(position.getX(),position.getY()+1);
+            newPosition=new Position(position.getX(),position.getY()-1);
         }
         if(checkPosition(newPosition)){
             return newPosition;
@@ -55,10 +55,11 @@ public class Map {
     }
 
     public boolean checkPosition(Position position){
-        if(position.getX()<0) return false;
-        if(position.getY()<0) return false;
+        if(position.getX()<=0) return false;
+        if(position.getY()<=0) return false;
         if(position.getX()>width) return false;
         if(position.getY()>breadth) return false;
+        if(checkTile.containsKey(position)==false) return true;
         Tile tilePosition=checkTile.get(position);
         if(tilePosition.isFire()) return false;
         if(tilePosition.isHills()) return false;
