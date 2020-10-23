@@ -1,8 +1,10 @@
 public class Man extends Creature {
 
     private int mana = 0;
-    public Man(int hitPoints, int attackPower, int defensePower) {
+    private Position mansPosition;
+    public Man(int hitPoints, int attackPower, int defensePower,Position mansPosition) {
         super(hitPoints, attackPower, defensePower);
+        this.mansPosition=mansPosition;
     }
 
     public int getMana() {
