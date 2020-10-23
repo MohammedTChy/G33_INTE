@@ -97,12 +97,6 @@ class CombatTest {
 }
 
 
-//ett sorts mellan-interface för spelarens actions
-//Varav testerna gör for loop för att använda samma attack
-//om och om igen för att klarlägga systemet.
-
-
-
 
 
 

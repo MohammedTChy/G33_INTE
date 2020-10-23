@@ -56,6 +56,8 @@ public class Combat {
 	
 	public void inflictDamage(int finalDamageValue, Creature defender) {
 		int currentHealth = defender.getHitPoints();
+		
+		
 		int finalHealth = currentHealth-finalDamageValue;
 		if (finalHealth<0) {
 			finalHealth = 0;
