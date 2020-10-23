@@ -1,53 +1,39 @@
-
 public class Combat {
-	
-	private man player; //should be player later
-	private man monster;
+
+	private Creature player; // should be player later
+	private Creature monster;
 	private boolean playerTurn;
 	private boolean activeCombat;
-	
-	public Combat(man player, man monster) { //should be player later
+
+	public Combat(Creature player, Creature monster) { // should be player later
 		this.monster = monster;
 		this.player = player;
 		playerTurn = true;
 		activeCombat = true;
 	}
 	
-	public void turn(){
+	public Creature getMonster() {
+		return monster;
+	}
 	
-		if(player.getHealth()<0||monster.getHealth()<0) {
-			activeCombat=false;
+	public Creature getPlayer() {
+		return player;
+	}	
+
+	public void turn() {
+
+		while (activeCombat) {
+
+			if (player.getHitPoints() <= 0 || monster.getHitPoints() <= 0) {
+				activeCombat = false;
+			} else if (!playerTurn) {
+			}
+
+			else {
+				// ToDo
+			}
 		}
-		else if (!playerTurn) {
-			//implement simple random method to decide monster attack
-			int damage = basicAttack(monster); //for now just basic attack
-			int finalDamage = finalDamageValue(damage, player);
-			player.loseHealth(finalDamage);
-		}
-		
-		else {
-			//ToDo
-		}
 	}
-	
-	public int basicAttack(man man) {
-		//return attack power
-		//should be man.getAttackPower
-		return 10; 
-	}
-	
-	public int powerAttack(man man) {
-		//return attack power*2
-		return 10*2; 
-	}
-	
-	public int defense(man man) {
-		//man.getDefensePower
-		return 1; //return defense value
-	}
-	
-	public int finalDamageValue(int damageBeforeDefense, man player) {
-		return damageBeforeDefense-player.getDefensePower;
-	}
-	
+
+
 }
