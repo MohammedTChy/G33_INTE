@@ -29,7 +29,7 @@ public class Item {
     public void setPotionAmmount(int potionAmmount) {
         if (potionAmmount < 0) {
             potionAmmount = 0;
-            //Thinking about putting an IAE because if it dropds more than it should have thats a problem, but need to discuss that later.
+            //Thinking about putting an IAE because if it drops more than it should have thats a problem, but need to discuss that later.
             //For now, lets leave it to adjust to zero.
         }
         this.potionAmmount = potionAmmount;

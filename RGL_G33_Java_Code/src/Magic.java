@@ -4,7 +4,6 @@ import java.util.List;
 public class Magic {
 
     //Mana might be removed from here and implemeneted eleswhere
-    private int mana;
     private int manaCost;
     private final String name;
     private int damage;
@@ -25,10 +24,6 @@ public class Magic {
     //Find out what this spell can do kind of damage
     public int getDamage() {
         return damage;
-    }
-
-    public int getMana() {
-        return mana;
     }
 
     //To find out how much mana it will cost to use this spell
