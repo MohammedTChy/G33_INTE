@@ -47,14 +47,21 @@ public class Combat {
 	}
 	
 	public int finalDamageValue(int damageBeforeDefense, Creature defender) {
-		return damageBeforeDefense - player.getDefensePower();
+		int finalDmg = damageBeforeDefense - player.getDefensePower();
+		if (finalDmg < 0) {
+			finalDmg = 0;
+		}
+		return finalDmg;
 	}
 	
 	public void inflictDamage(int finalDamageValue, Creature defender) {
 		int currentHealth = defender.getHitPoints();
 		int finalHealth = currentHealth-finalDamageValue;
+		if (finalHealth<0) {
+			finalHealth = 0;
+		}
 		defender.setHitPoints(finalHealth);
 	}
-	
+
 
 }

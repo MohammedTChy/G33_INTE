@@ -67,6 +67,19 @@ class CombatTest {
         
         assertEquals(500-(200-150), m.getHitPoints());
 	}
+	
+	@Test
+	void attackerCanNotHealDefender() {
+        Man m = new Man(500,100,150);
+        Dragon d = new Dragon(1000, -100, 50);
+        Combat c = new Combat(m, d);
+        
+        int f = c.finalDamageValue(c.basicAttack(d), m);
+        
+        c.inflictDamage(f, m);
+        
+        assertEquals(500, m.getHitPoints());
+	}
 
 }
 
