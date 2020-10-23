@@ -35,5 +35,8 @@ public class Combat {
 		}
 	}
 
+	public int basicAttack(Creature attacker) {
+		return attacker.getAttackPower();
+	}
 
 }

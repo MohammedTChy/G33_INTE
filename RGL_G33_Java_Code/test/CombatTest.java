@@ -13,10 +13,19 @@ class CombatTest {
 		
         Man m = new Man(500,50,50);
         Dragon d = new Dragon(1000, 100, 200);
-        
         Combat c = new Combat(m, d);
+        
         assertEquals(m, c.getPlayer());
         assertEquals(d, c.getMonster());
+	}
+	
+	@Test
+	void basicAttackEqualsAttackPower() {
+        Man m = new Man(500,50,50);
+        Dragon d = new Dragon(1000, 100, 200);
+        Combat c = new Combat(m, d);
+        
+        assertEquals(m.getAttackPower(), c.basicAttack(m));
 	}
 	
 	
