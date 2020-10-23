@@ -28,7 +28,32 @@ class CombatTest {
         assertEquals(m.getAttackPower(), c.basicAttack(m));
 	}
 	
+	@Test
+	void criticalAttackEqualsDoubleAttackPower() {
+        Man m = new Man(500,50,50);
+        Dragon d = new Dragon(1000, 100, 200);
+        Combat c = new Combat(m, d);
+        
+        assertEquals(2*m.getAttackPower(), c.criticalAttack(m));		
+	}
 	
+	@Test
+	void calculateFinalDamageWithBasicAttack() {
+        Man m = new Man(500,50,50);
+        Dragon d = new Dragon(1000, 100, 200);
+        Combat c = new Combat(m, d);
+        
+        assertEquals(100-50, c.finalDamageValue(c.basicAttack(d), m));
+	}
+	
+	@Test
+	void calculateFinalDamageWithCriticalAttack() {
+        Man m = new Man(500,50,50);
+        Dragon d = new Dragon(1000, 100, 200);
+        Combat c = new Combat(m, d);
+        
+        assertEquals(200-50, c.finalDamageValue(c.criticalAttack(d), m));
+	}
 
 }
 

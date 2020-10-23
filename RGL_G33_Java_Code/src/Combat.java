@@ -26,9 +26,12 @@ public class Combat {
 
 			if (player.getHitPoints() <= 0 || monster.getHitPoints() <= 0) {
 				activeCombat = false;
-			} else if (!playerTurn) {
+			} 
+			
+			else if (!playerTurn) {
+				
 			}
-
+			
 			else {
 				// ToDo
 			}
@@ -38,5 +41,14 @@ public class Combat {
 	public int basicAttack(Creature attacker) {
 		return attacker.getAttackPower();
 	}
+	
+	public int criticalAttack(Creature attacker) {
+		return 2*attacker.getAttackPower();
+	}
+	
+	public int finalDamageValue(int damageBeforeDefense, Creature defender) {
+		return damageBeforeDefense - player.getDefensePower();
+	}
+	
 
 }
