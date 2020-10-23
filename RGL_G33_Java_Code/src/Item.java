@@ -27,12 +27,17 @@ public class Item {
     }
 
     public void setPotionAmmount(int potionAmmount) {
+        if (potionAmmount < 0) {
+            potionAmmount = 0;
+            //Thinking about putting an IAE because if it dropds more than it should have thats a problem, but need to discuss that later.
+            //For now, lets leave it to adjust to zero.
+        }
         this.potionAmmount = potionAmmount;
     }
 
     //Potion interaktion, inte nöjd men en början, har ej fixat mana då den inte finns med
     //Idéen är att den kollar vilken typ av potion det är, tar den potion och adderar upp, kollar ej limit, då det finns inte för tilfället med att lägga det.
-    public void usePotion(Player p, Item i) {
+    public void usePotion(Creature p, Item i) {
         if (i.potionType.equals("Health")) {
             int hP = p.getHitPoints();
             int restoreHp = i.getPotionAmmount();

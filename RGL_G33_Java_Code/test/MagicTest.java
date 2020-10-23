@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MagicTest {
 
-
     @Test
     void getMethodTestTheNameOfTheMagic() {
         Magic m = new Magic("Fireball", 10, 5);
@@ -48,6 +47,34 @@ class MagicTest {
         Magic m = new Magic("Flash", 0, 0);
         assertEquals("Name = Flash, ManaCost = 0, Damage = 0", m.toString());
 
+    }
+
+    @Test
+    void setManaCostToANewCost(){
+        Magic m = new Magic("Water", 5, 5);
+        m.setManaCost(2);
+        assertEquals(2, m.getManaCost());
+    }
+
+    @Test
+    void setManaCostToBelowZeroAndCheckIfItAutoAdjustToZero(){
+        Magic m = new Magic("Water", 5, 5);
+        m.setManaCost(-2);
+        assertEquals(0, m.getManaCost());
+    }
+
+    @Test
+    void setDamageToANewDamageOutput(){
+        Magic m = new Magic("Thunderbolt", 10,5);
+        m.setDamage(12);
+        assertEquals(12, m.getDamage());
+    }
+
+    @Test
+    void setDamageBelowZeroAutoAdjustFixItToZero(){
+        Magic m = new Magic("Thunderbolt", 10,5);
+        m.setDamage(-5);
+        assertEquals(0, m.getDamage());
     }
 
 

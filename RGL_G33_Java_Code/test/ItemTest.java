@@ -25,7 +25,7 @@ class ItemTest {
 
     @Test
     void addingHealthToAPlayerWithPotion() {
-        Man m = new Man("Boromir", Man.ManType.WARRIOR);
+        Man m = new Man(2000,200,92);
         Item p = new Item("Health", 500);
         p.usePotion(m, p);
         assertEquals(2500, m.getHitPoints());
@@ -33,7 +33,7 @@ class ItemTest {
 
     @Test
     void addingHealthToAplaterWithPotionButEmptyingTheAmmountToZero() {
-        Man m = new Man("Boromir", Man.ManType.WARRIOR);
+        Man m = new Man(2000,200,92);
         Item p = new Item("Health", 500);
         p.usePotion(m, p);
         assertEquals(0, p.getPotionAmmount());
@@ -43,6 +43,21 @@ class ItemTest {
     void toStringFormatForHealthPotion() {
         Item p = new Item("Health", 550);
         assertEquals("This is a Health Potion, with the amount 550", p.toString());
+    }
+
+    @Test
+    void setPotionAmmountToANewAmmount() {
+        Item p = new Item("Health", 550);
+        p.setPotionAmmount(800);
+        assertEquals(800, p.getPotionAmmount());
+    }
+
+    @Test
+    void setPotionAmmountToBelowZeroAutoAdjustToZero() {
+        Item p = new Item("Health", 550);
+        p.setPotionAmmount(-20);
+        assertEquals(0, p.getPotionAmmount());
+
     }
 
 
