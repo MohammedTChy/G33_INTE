@@ -39,8 +39,8 @@ class CombatTest {
 	
 	@Test
 	void calculateFinalDamageWithBasicAttack() {
-        Man m = new Man(500,100,150);
-        Dragon d = new Dragon(1000, 200, 50);
+        Man m = new Man(500,0,150);
+        Dragon d = new Dragon(1000, 200, 0);
         Combat c = new Combat(m, d);
         
         assertEquals(200-150, c.finalDamageValue(c.basicAttack(d), m));
@@ -48,8 +48,8 @@ class CombatTest {
 	
 	@Test
 	void calculateFinalDamageWithCriticalAttack() {
-        Man m = new Man(500,100,150);
-        Dragon d = new Dragon(1000, 200, 50);
+        Man m = new Man(500,0,150);
+        Dragon d = new Dragon(1000, 200, 0);
         Combat c = new Combat(m, d);
         
         assertEquals(2*200-150, c.finalDamageValue(c.criticalAttack(d), m));
@@ -57,8 +57,8 @@ class CombatTest {
 	
 	@Test
 	void inflictBasicAttackFinalDamage() {
-        Man m = new Man(500,100,150);
-        Dragon d = new Dragon(1000, 200, 50);
+        Man m = new Man(500,0,150);
+        Dragon d = new Dragon(1000, 200, 0);
         Combat c = new Combat(m, d);
         
         int f = c.finalDamageValue(c.basicAttack(d), m);
@@ -69,9 +69,9 @@ class CombatTest {
 	}
 	
 	@Test
-	void attackerCanNotHealDefender() {
-        Man m = new Man(500,100,150);
-        Dragon d = new Dragon(1000, -100, 50);
+	void negativeAttackPowerCanNotHealDefender() {
+        Man m = new Man(500,0,200);
+        Dragon d = new Dragon(1000, -100, 0);
         Combat c = new Combat(m, d);
         
         int f = c.finalDamageValue(c.basicAttack(d), m);
@@ -80,7 +80,20 @@ class CombatTest {
         
         assertEquals(500, m.getHitPoints());
 	}
-
+	
+	@Test
+	void strongDefensePowerCanNotHealDefender() {
+        Man m = new Man(500, 50, 0);
+        Dragon d = new Dragon(1000, 0, 100);
+        Combat c = new Combat(m, d);
+        
+        int f = c.finalDamageValue(c.basicAttack(m), d);
+        
+        c.inflictDamage(f, d);
+        
+        assertEquals(1000, d.getHitPoints());
+	}
+	
 }
 
 

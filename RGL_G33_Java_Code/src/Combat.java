@@ -1,11 +1,11 @@
 public class Combat {
 
-	private Creature player; // should be player later
+	private Creature player; 
 	private Creature monster;
 	private boolean playerTurn;
 	private boolean activeCombat;
 
-	public Combat(Creature player, Creature monster) { // should be player later
+	public Combat(Creature player, Creature monster) { 
 		this.monster = monster;
 		this.player = player;
 		playerTurn = true;
@@ -47,7 +47,7 @@ public class Combat {
 	}
 	
 	public int finalDamageValue(int damageBeforeDefense, Creature defender) {
-		int finalDmg = damageBeforeDefense - player.getDefensePower();
+		int finalDmg = damageBeforeDefense - defender.getDefensePower();
 		if (finalDmg < 0) {
 			finalDmg = 0;
 		}
