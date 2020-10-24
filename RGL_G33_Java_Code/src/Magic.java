@@ -4,7 +4,6 @@ import java.util.List;
 public class Magic {
 
     //Mana might be removed from here and implemeneted eleswhere
-    private int mana;
     private int manaCost;
     private final String name;
     private int damage;
@@ -13,22 +12,16 @@ public class Magic {
     public Magic(String name, int manaCost, int damage) {
         if (manaCost < 0 || damage < 0) {
             throw new IllegalArgumentException("Must have a name, manacost/damage must be either 0 or above");
-            //Might need to seperate out each variable, anything below zero is not accepted,
+            //Might need to seperate out each variable, anything below zero is not accepted, however, they way its setup with OR works too.
         }
         this.name = name;
         this.manaCost = manaCost;
         this.damage = damage;
-
-
     }
 
     //Find out what this spell can do kind of damage
     public int getDamage() {
         return damage;
-    }
-
-    public int getMana() {
-        return mana;
     }
 
     //To find out how much mana it will cost to use this spell
@@ -46,9 +39,9 @@ public class Magic {
 
     //Ras, klass och special item kan påverka damagae
     public void setDamage(int damage) {
-        if(damage < 0 ){
+        if (damage < 0) {
             damage = 0;
-        }//Auto adjust damage to zero if it drops below zero because of skills/ability/items
+        }//Auto adjust damage to zero if it drops below zero because of skills/ability/items/debuffer
         this.damage = damage;
     }//Maybe change from zero to 1 damage, but thats for later if neeeded
 
@@ -57,6 +50,7 @@ public class Magic {
         return name;
     }
 
+    //toString method to show/know how it should me presented/saved
     @Override
     public String toString() {
         return "Name = " + getName() + ", ManaCost = " + getManaCost() + ", Damage = " + getDamage();

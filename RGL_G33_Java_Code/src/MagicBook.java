@@ -8,9 +8,11 @@ public class MagicBook {
     //added static Magic before hand is possible, did not do it mainly because of not needed to yet
     private List<Magic> magicBook = new ArrayList<>();
 
-    public List<Magic> getMagicBook() {
+    //Call on this to get the entire list of spells in the book.
+    /*public List<Magic> getMagicBook() {
         return magicBook;
-    }
+    }*/
+
 
     public void addMagicBook(String name, int manaCost, int damage) {
         magicBook.add(new Magic(name, manaCost, damage));
