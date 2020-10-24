@@ -4,8 +4,6 @@ public class Item {
     /*public enum PotionType {
         Health_Potion, Mana_Potion
     }*/
-
-
     private final String potionType;
     private int potionAmmount;
 
@@ -34,7 +32,6 @@ public class Item {
         }
         this.potionAmmount = potionAmmount;
     }
-
 
     public void usePotion(Creature p, Item i) {
         //This if-equals is a temprorary thing, change it later stage of the project but for now it works if you limit to only Health potion
