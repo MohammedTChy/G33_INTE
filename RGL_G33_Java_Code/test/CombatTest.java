@@ -241,4 +241,27 @@ class CombatTest {
         assertTrue(0<knight.getHitPoints());
 	}
 	
+	@Test
+	void testPlayerTurn0EqualsBasicAttack() {
+        Man m = new Man(500, 500, 150);
+        Dragon d = new Dragon(5000, 100, 0);
+        Combat c = new Combat(m, d);
+        
+        c.playerTurn(0, m, d);
+        
+        assertEquals(4500,d.getHitPoints());
+
+	}
+	
+	void testPlayerTurn1EqualsCriticalAttack() {
+        Man m = new Man(500, 500, 150);
+        Dragon d = new Dragon(5000, 100, 0);
+        Combat c = new Combat(m, d);
+        
+        c.playerTurn(1, m, d);
+        
+        assertEquals(4000,d.getHitPoints());
+
+	}
+	
 }
