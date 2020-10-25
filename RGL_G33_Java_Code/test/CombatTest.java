@@ -113,6 +113,19 @@ class CombatTest {
 	}
 	
 	@Test
+	void negativegDefensePowerDoesIncreaseDamage() {
+        Man m = new Man(500, 50, 0);
+        Dragon d = new Dragon(1000, 0, -50);
+        Combat c = new Combat(m, d);
+        
+        int f = c.finalDamageValue(c.basicAttack(m), d);
+        
+        c.inflictDamage(f, d);
+        
+        assertEquals(900, d.getHitPoints());
+	}
+	
+	@Test
 	void randomReturnsNumber0to9() {
         Man m = new Man(500, 50, 0);
         Dragon d = new Dragon(1000, 0, 100);
@@ -181,6 +194,31 @@ class CombatTest {
         
         assertEquals(850,d.getHitPoints());
         assertEquals(400,m.getHitPoints());
+
+	}
+	
+	@Test
+	void turnTesterCombatNegativeAttackPower() {
+        Man m = new Man(500, -500, 0);
+        Dragon d = new Dragon(500, -500, 0);
+        Combat c = new Combat(m, d);
+        
+        c.turnTester(9,10);
+
+        assertEquals(500,d.getHitPoints());
+        assertEquals(500,m.getHitPoints());
+
+	}
+	
+	@Test
+	void turnTesterCombatNegativeDefense() {
+        Man m = new Man(500, 100, -500);
+        Dragon d = new Dragon(500, 100, -100);
+        Combat c = new Combat(m, d);
+        
+        c.turnTester(1,1);
+
+        assertEquals(300,d.getHitPoints());
 
 	}
 	
@@ -264,5 +302,5 @@ class CombatTest {
         assertEquals(4000,d.getHitPoints());
 
 	}
-	
+
 }

@@ -64,6 +64,7 @@ public class Combat {
 			}
 			
 			else {
+				//Note that turnTester uses monsterTurn method for simplicity
 				monsterTurn(attackType, player, monster);
 				playerTurn = false;
 			}
@@ -151,6 +152,5 @@ public class Combat {
 		int attack = turn.nextInt(10);
 		return attack;
 	}
-
 
 }
