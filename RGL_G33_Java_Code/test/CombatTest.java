@@ -92,5 +92,4 @@ class CombatTest {
         
         assertEquals(1000, d.getHitPoints());
 	}
-	
 }

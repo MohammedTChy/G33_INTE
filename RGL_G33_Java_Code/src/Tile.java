@@ -9,8 +9,6 @@ public class Tile {
     private boolean life;
 
     public Tile(Position coordinate, boolean fire, boolean hills, boolean jangle, boolean enemy, boolean empty, boolean level, boolean life) {
-        if(checkIfOnlyIsTrue(fire, hills, jangle, enemy, empty, level, life)==false)
-            throw new IllegalArgumentException("Cant place two item in same tiles");
         this.fire=fire;
         this.hills=hills;
         this.jangle=jangle;
@@ -19,14 +17,15 @@ public class Tile {
         this.level=level;
         this.life=life;
         this.coordinate=coordinate;
+        if(checkIfOnlyIsTrue()==false)
+            throw new IllegalArgumentException("Cant place two item in same tiles");
     }
     public Tile(Position position)
     {
         this(position,false,false,false,false,true,false,false);
     }
 
-    boolean checkIfOnlyIsTrue(boolean fire, boolean hills, boolean jangle, boolean enemy, boolean empty, boolean level, boolean life)
-    {
+    boolean checkIfOnlyIsTrue() {
         if(fire && !hills && !jangle && !enemy && !empty && !level && !life) return true;
         if(!fire && hills && !jangle && !enemy && !empty && !level && !life) return true;
         if(!fire && !hills && jangle && !enemy && !empty && !level && !life) return true;
