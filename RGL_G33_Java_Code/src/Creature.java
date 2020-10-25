@@ -45,9 +45,9 @@ public abstract class Creature {
     public Position getMansPosition() {  // plz dont chng it change this method, it was created to interact with map.
         return creaturesPosition;
     }
-    public void setMansPosition(Position mansPosition) {//plz dont chng it change this method, it was created to interact with map.
+    public void setMansPosition(Position mansPosition) {
         this.creaturesPosition = mansPosition;
-    }//**************
+    }
 
     public int getAttackPower() {
         return attackPower;
