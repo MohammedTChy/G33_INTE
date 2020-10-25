@@ -59,8 +59,14 @@ class ItemTest {
             p.setPotionAmmount(-50);
 
         });
+    }
 
-
+    @Test
+    void testNewHPAutoAdjustToMaxHealthWhenReachingAboveThresholdOfMaxHealth() {
+        Man m = new Man(2000, 200, 92);
+        Item p = new Item("Health", 2000);
+        p.usePotion(m, p);
+        assertEquals(2500, m.getHitPoints());
     }
 
 

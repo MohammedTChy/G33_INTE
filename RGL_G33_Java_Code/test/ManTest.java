@@ -58,4 +58,19 @@ class ManTest {
         Man m = new Man(2000, 200, 90);
         assertEquals("HP: 2000, Attack: 200, Defense: 90", m.toString());
     }
+
+    @Test
+    void testGetMaxHealth() {
+        Man m = new Man(2000,200,92);
+        assertEquals(2500, m.getMaxHealth());
+    }
+
+    @Test
+    void testSetNewMaxHealth(){
+        Man m = new Man(2000,200,92);
+        m.setNewMaxHealth(500);
+        assertEquals(3000, m.getMaxHealth());
+    }
+
+
 }
