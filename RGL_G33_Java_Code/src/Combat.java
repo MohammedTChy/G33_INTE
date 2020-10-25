@@ -8,10 +8,14 @@ public class Combat {
 	private boolean activeCombat;
 
 	public Combat(Creature player, Creature monster) { 
+        if (player == monster) {
+            throw new IllegalArgumentException("Creatures can not combat themselves!");
+        }
 		this.monster = monster;
 		this.player = player;
 		playerTurn = true;
 		activeCombat = true;
+		
 	}
 	
 	public Creature getMonster() {
@@ -31,13 +35,38 @@ public class Combat {
 			} 
 			
 			else if (!playerTurn) {
-				
+				monsterTurn(random(), monster, player);
+				playerTurn = true;
 			}
 			
 			else {
-				// ToDo
+				//player choice should be seperate class
+				int playerChoice = 1;
+				monsterTurn(playerChoice, player, monster);
+				playerTurn = false;
 			}
 		}
+	}
+	
+	public void turnTester(int attack, int totalTurns) {
+
+		do {
+
+			if (player.getHitPoints() <= 0 || monster.getHitPoints() <= 0) {
+				activeCombat = false;
+			} 
+			
+			else if (!playerTurn) {
+				monsterTurn(attack, monster, player);
+				playerTurn = true;
+			}
+			
+			else {
+				monsterTurn(attack, player, monster);
+				playerTurn = false;
+			}
+			totalTurns--;
+		} while (activeCombat = true && totalTurns>0);
 	}
 
 	public int basicAttack(Creature attacker) {
@@ -66,7 +95,7 @@ public class Combat {
 		}
 		defender.setHitPoints(finalHealth);
 	}
-	
+
 
 	public void monsterTurn(int number, Creature attacker, Creature defender) {
 		
@@ -82,7 +111,7 @@ public class Combat {
 			inflictDamage(finalDamage,defender);
 		}
 		
-		//more can be added
+		//more can be added, even non combat effects
 		
 	}
 	

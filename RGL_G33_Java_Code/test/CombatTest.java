@@ -8,17 +8,16 @@ class CombatTest {
 	}
 	
 	@Test
-	void constructorCreatesCombatObject() {
-		
+	void creaturesCanNotStartCombatWithItself() {
         Man m = new Man(500,50,50);
-        Dragon d = new Dragon(1000, 100, 200);
-        Combat c = new Combat(m, d);
+
+        assertThrows(IllegalArgumentException.class, () ->{
+        	new Combat(m, m);
+        });
         
-        assertEquals(m, c.getPlayer());
-        assertEquals(d, c.getMonster());
 	}
 	
-	void CreatureCanNotBeInCombatWithItself() {
+	void constructorCreatesCombatObject() {
 		//toFix
         Man m = new Man(500,50,50);
         Dragon d = new Dragon(1000, 100, 200);
@@ -26,7 +25,7 @@ class CombatTest {
         
         assertEquals(m, c.getPlayer());
         assertEquals(d, c.getMonster());
-	}	
+	}
 	
 	@Test
 	void basicAttackEqualsAttackPower() {
@@ -136,6 +135,16 @@ class CombatTest {
 	}
 	
 	@Test
+	void monsterTurn5RollEquals8BasicAttack() {
+        Man m = new Man(500, 50, 0);
+        Dragon d = new Dragon(1000, 0, 50);
+        Combat c = new Combat(m, d);
+        c.monsterTurn(5, m, d);
+
+        assertEquals(1000,d.getHitPoints());
+	}	
+	
+	@Test
 	void monsterTurn9RollEqualsCriticalAttack() {
         Man m = new Man(500, 50, 0);
         Dragon d = new Dragon(1000, 0, 50);
@@ -145,4 +154,34 @@ class CombatTest {
         
         assertEquals(950,d.getHitPoints());
 	}
+	
+	@Test
+	void monsterTurn10RollEqualsNothing() {
+        Man m = new Man(500, 50, 0);
+        Dragon d = new Dragon(1000, 0, 50);
+        Combat c = new Combat(m, d);
+        
+        c.monsterTurn(10, m, d);
+        
+        assertEquals(1000,d.getHitPoints());
+	}
+	
+	@Test
+	void turnTester5TurnsBasicAttacks() {
+        Man m = new Man(500, 50, 0);
+        Dragon d = new Dragon(1000, 50, 0);
+        Combat c = new Combat(m, d);
+        
+        //in 5 turns man basicAttacks 3 times
+        //dragon basicAttacks 2 times
+        //resulting healthpoints should be 400 and 850
+        
+        c.turnTester(1,5);
+        
+        assertEquals(850,d.getHitPoints());
+        assertEquals(400,m.getHitPoints());
+
+	}
+	
+	
 }
