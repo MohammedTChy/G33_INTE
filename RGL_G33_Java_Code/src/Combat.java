@@ -40,8 +40,8 @@ public class Combat {
 			}
 			
 			else {
-				//player choice should be seperate class
-				int playerChoice = 1;
+				//player choice should be seperate class and not use monsterTurn
+				int playerChoice = random();
 				monsterTurn(playerChoice, player, monster);
 				playerTurn = false;
 			}
@@ -117,7 +117,7 @@ public class Combat {
 	
 	public int random() {
 		Random turn = new Random();
-		int attack = turn.nextInt(9);
+		int attack = turn.nextInt(10);
 		return attack;
 	}
 

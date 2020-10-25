@@ -171,17 +171,50 @@ class CombatTest {
         Man m = new Man(500, 50, 0);
         Dragon d = new Dragon(1000, 50, 0);
         Combat c = new Combat(m, d);
+
+        c.turnTester(1,5);
         
         //in 5 turns man basicAttacks 3 times
         //dragon basicAttacks 2 times
         //resulting healthpoints should be 400 and 850
         
-        c.turnTester(1,5);
-        
         assertEquals(850,d.getHitPoints());
         assertEquals(400,m.getHitPoints());
 
 	}
+	
+	@Test
+	void testCombatBetweenDragonAndMan() {
+        Man man = new Man(500, 50, 0);
+        Dragon dragon = new Dragon(1000, 500, 50);
+        Combat c = new Combat(man, dragon);
+        
+        c.turn();
+        
+        //man should die in 4 total minimum
+        //which means man can not deal more than 100 damage
+        //Man health should equal 0 and Dragon be over 899
+        
+        assertEquals(0,man.getHitPoints());
+        assertTrue(899<dragon.getHitPoints());
+	}
+	
+	@Test
+	void CombatWillResultInRandomCriticalAttacks() {
+        Man m = new Man(500, 500, 1000);
+        Dragon d = new Dragon(500, 500, 500);
+        Combat c = new Combat(m, d);
+        
+        c.turn();
+        
+        //man should get criticalAttack eventually
+        //dragon deals 1000 damage at most and will never damage man
+        
+        assertEquals(0,d.getHitPoints());
+        assertEquals(500,m.getHitPoints());
+
+	}
+	
 	
 	
 }
