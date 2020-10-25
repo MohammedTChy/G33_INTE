@@ -18,9 +18,28 @@ class CombatTest {
         assertEquals(d, c.getMonster());
 	}
 	
+	void CreatureCanNotBeInCombatWithItself() {
+		//toFix
+        Man m = new Man(500,50,50);
+        Dragon d = new Dragon(1000, 100, 200);
+        Combat c = new Combat(m, d);
+        
+        assertEquals(m, c.getPlayer());
+        assertEquals(d, c.getMonster());
+	}	
+	
 	@Test
 	void basicAttackEqualsAttackPower() {
         Man m = new Man(500,50,50);
+        Dragon d = new Dragon(1000, 0, 0);
+        Combat c = new Combat(m, d);
+        
+        assertEquals(m.getAttackPower(), c.basicAttack(m));
+	}
+	
+	@Test
+	void basicAttackEqualsAttackPowerIfNegative() {
+        Man m = new Man(500,-50,50);
         Dragon d = new Dragon(1000, 100, 200);
         Combat c = new Combat(m, d);
         
@@ -91,6 +110,19 @@ class CombatTest {
         c.inflictDamage(f, d);
         
         assertEquals(1000, d.getHitPoints());
+	}
+	
+	@Test
+	void randomReturnsNumber0to9() {
+        Man m = new Man(500, 50, 0);
+        Dragon d = new Dragon(1000, 0, 100);
+        Combat c = new Combat(m, d);
+        
+        int random = c.random();
+        
+        
+        assertTrue(-1<random&&random<10);
+
 	}
 	
 }

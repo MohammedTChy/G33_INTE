@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Combat {
 
 	private Creature player; 
@@ -63,6 +65,26 @@ public class Combat {
 			finalHealth = 0;
 		}
 		defender.setHitPoints(finalHealth);
+	}
+	
+
+	public void monsterTurn(int number) {
+		
+		if (number <9) {
+			//normal attack
+		}
+		else if (number <10 && number > 8) {
+			//critical attack
+		}
+		
+		//more can be added
+		
+	}
+	
+	public int random() {
+		Random turn = new Random();
+		int attack = turn.nextInt(9);
+		return attack;
 	}
 
 
