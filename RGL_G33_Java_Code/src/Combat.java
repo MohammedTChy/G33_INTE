@@ -40,7 +40,9 @@ public class Combat {
 			}
 			
 			else {
-				//player choice should be seperate class and not use monsterTurn
+				//players need a seperate user interface class with more complex choices
+				//is not yet implemented because its outside the scope of project
+				//so for now makes use of monsterTurn method
 				int playerChoice = random();
 				monsterTurn(playerChoice, player, monster);
 				playerTurn = false;

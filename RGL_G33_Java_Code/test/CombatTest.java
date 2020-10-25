@@ -17,6 +17,7 @@ class CombatTest {
         
 	}
 	
+	@Test
 	void constructorCreatesCombatObject() {
 		//toFix
         Man m = new Man(500,50,50);
@@ -215,6 +216,17 @@ class CombatTest {
 
 	}
 	
-	
+	@Test
+	void superiourDragonBestsManInCombat() {
+        Man m = new Man(500, 50, 25);
+        Dragon d = new Dragon(50000, 100, 25);
+        Combat c = new Combat(m, d);
+        
+        c.turn();
+        
+        assertEquals(0,m.getHitPoints());
+        assertTrue(40000<d.getHitPoints());
+
+	}	
 	
 }
