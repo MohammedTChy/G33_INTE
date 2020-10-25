@@ -119,8 +119,8 @@ public class Combat {
 
 	public void playerTurn(int number, Creature attacker, Creature defender) {
 		
-		//Practically works like monster class, but may now have new abilities
-		//separate from monsters to choose from
+		//Practically works like monster class, but may now have new implementations
+		//of abilities separate from monsters to choose from.
 		
 		if (number>1) {
 			number = 0;
@@ -142,7 +142,6 @@ public class Combat {
 		default:
 			break;
 		}
-		
 		
 		//more can be added, even non combat effects
 		

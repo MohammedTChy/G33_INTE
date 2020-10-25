@@ -242,7 +242,7 @@ class CombatTest {
 	}
 	
 	@Test
-	void testPlayerTurn0EqualsBasicAttack() {
+	void testPlayerTurn0RollEqualsBasicAttack() {
         Man m = new Man(500, 500, 150);
         Dragon d = new Dragon(5000, 100, 0);
         Combat c = new Combat(m, d);
@@ -253,7 +253,8 @@ class CombatTest {
 
 	}
 	
-	void testPlayerTurn1EqualsCriticalAttack() {
+	@Test
+	void testPlayerTurn1RollEqualsCriticalAttack() {
         Man m = new Man(500, 500, 150);
         Dragon d = new Dragon(5000, 100, 0);
         Combat c = new Combat(m, d);
