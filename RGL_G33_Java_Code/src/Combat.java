@@ -40,17 +40,17 @@ public class Combat {
 			}
 			
 			else {
-				//players need a seperate user interface class with more complex choices
+				//player need a seperate user interface class to choose attacks
 				//is not yet implemented because its outside the scope of project
-				//so for now makes use of monsterTurn method
+				//so for now makes use of random class to simulate choices
 				int playerChoice = random();
-				monsterTurn(playerChoice, player, monster);
+				playerTurn(playerChoice, player, monster);
 				playerTurn = false;
 			}
 		}
 	}
 	
-	public void turnTester(int attack, int totalTurns) {
+	public void turnTester(int attackType, int totalTurns) {
 
 		do {
 
@@ -59,12 +59,12 @@ public class Combat {
 			} 
 			
 			else if (!playerTurn) {
-				monsterTurn(attack, monster, player);
+				monsterTurn(attackType, monster, player);
 				playerTurn = true;
 			}
 			
 			else {
-				monsterTurn(attack, player, monster);
+				monsterTurn(attackType, player, monster);
 				playerTurn = false;
 			}
 			totalTurns--;
@@ -116,7 +116,34 @@ public class Combat {
 		//more can be added, even non combat effects
 		
 	}
-	
+
+	public void playerTurn(int number, Creature attacker, Creature defender) {
+		
+		if (number>1) {
+			number = 0;
+			}
+		
+		switch(number) {
+		case 0:
+			int damage = basicAttack(attacker);
+			int finalDamage = finalDamageValue(damage, defender);
+			inflictDamage(finalDamage,defender);
+			break;
+		case 1:
+			int criticalDamage = criticalAttack(attacker);
+			int criticalFinalDamage = finalDamageValue(criticalDamage, defender);
+			inflictDamage(criticalFinalDamage,defender);
+			break;
+		case 2:
+			break;
+		default:
+			break;
+		}
+		
+		
+		//more can be added, even non combat effects
+		
+	}	
 	public int random() {
 		Random turn = new Random();
 		int attack = turn.nextInt(10);

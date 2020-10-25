@@ -227,6 +227,18 @@ class CombatTest {
         assertEquals(0,m.getHitPoints());
         assertTrue(40000<d.getHitPoints());
 
-	}	
+	}
+	
+	@Test
+	void valiantKnightSlaysDragon() {
+        Man knight = new Man(500, 500, 150);
+        Dragon dragon = new Dragon(5000, 100, 25);
+        Combat c = new Combat(knight, dragon);
+        
+        c.turn();
+        
+        assertEquals(0,dragon.getHitPoints());
+        assertTrue(0<knight.getHitPoints());
+	}
 	
 }
