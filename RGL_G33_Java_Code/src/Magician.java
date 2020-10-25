@@ -1,6 +1,9 @@
+import java.util.List;
+
 public class Magician extends Creature {
 
     private int mana;
+
 
     public Magician(int hitPoints, int attackPower, int defensePower, int mana) {
         super(hitPoints, attackPower, defensePower);
@@ -17,6 +20,11 @@ public class Magician extends Creature {
         this.mana = mana;
     }
 
+    /*public void manaChange(int amount){
+        mana += amount;
+        checkManaNotBelowZero(mana);
+    }*/
+
     private void checkManaNotBelowZero(int mana) {
         if (mana < 0) {
             throw new IllegalArgumentException("Mana less than 0");
@@ -25,7 +33,6 @@ public class Magician extends Creature {
 
     @Override
     public String toString() {
-        return "HP: " + getHitPoints() +
-                ", Attack: " + getAttackPower() + ", Defense: " + getDefensePower() + ", Mana: " + getMana();
+        return "HP: " + getHitPoints() + ", Attack: " + getAttackPower() + ", Defense: " + getDefensePower() + ", Mana: " + getMana();
     }
 }
