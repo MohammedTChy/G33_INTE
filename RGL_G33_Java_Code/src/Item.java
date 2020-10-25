@@ -36,12 +36,12 @@ public class Item {
     public void usePotion(Creature p, Item i) {
         //This if-equals is a temprorary thing, change it later stage of the project but for now it works if you limit to only Health potion
         if (i.potionType.equals("Health")) {
-            int tempHP = p.getHitPoints();
-            int ammount = i.getPotionAmmount();
-            tempHP += ammount;
+            int tempHP = p.getHitPoints(); //HP is brought to a tempHP holder
+            int tempAmmount = i.getPotionAmmount();//Pottion ammount is brought to a temp holder
+            tempHP += tempAmmount; //Add these two temp holders together
             p.setHitPoints(tempHP); //Set now the new value from the temp to the player
-            ammount -= i.potionAmmount; //Decrease the ammount of the potion
-            i.setPotionAmmount(ammount); //Set the new ammount
+            tempAmmount -= i.potionAmmount; //Decrease the ammount of the potion
+            i.setPotionAmmount(tempAmmount); //Set the new ammount
 
         }
     }

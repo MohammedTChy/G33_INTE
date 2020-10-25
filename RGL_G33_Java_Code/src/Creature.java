@@ -11,6 +11,7 @@ public abstract class Creature {
         this.attackPower = attackPower;
         this.defensePower = defensePower;
         this.maxHealth = hitPoints + 500;
+        //Every character starts with 500 extra HP. Can be adjusted or fixed in another way
     }
 
     public int getHitPoints() {
@@ -21,10 +22,11 @@ public abstract class Creature {
         checkHitPointsNotBelowZero(hitPoints);
         if (maxHealth <= hitPoints) {
             this.hitPoints = maxHealth;
-        }
+        }// If HP happens to go above the limited maxHealth boundry, it should adjust it to maxHealth
+        //ex: 2500hp max, but you have at the moment 2300Hp left, drink a 500 potion, so when it reaches above it just adjust it back to max health
         if (maxHealth >= hitPoints) {
             this.hitPoints = hitPoints;
-        }
+        }//This simply just check if the new HP is same or less than max HP
     }
 
     public int getMaxHealth() {
@@ -33,7 +35,7 @@ public abstract class Creature {
 
     public void setNewMaxHealth(int newMaxHealth) {
         this.maxHealth += newMaxHealth;
-    }
+    }//raise the max health threshold because of item,skilll or etc
 
 
     private void checkHitPointsNotBelowZero(int hitPoints) {
