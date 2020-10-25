@@ -3,7 +3,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class Map {
-    //..
     private int width;
     private int breadth;
     HashSet<Position>checkPosition=new HashSet<>();
