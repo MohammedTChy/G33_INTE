@@ -2,7 +2,7 @@ public abstract class Creature {
     private int hitPoints;
     private int attackPower;
     private int defensePower;
-    private Position mansPosition;//************************************************
+    private Position mansPosition;
     private int maxHealth;
 
     public Creature(int hitPoints, int attackPower, int defensePower) {
@@ -44,7 +44,7 @@ public abstract class Creature {
     }
     public Position getMansPosition() {  // plz dont chng it change this method, it was created to interact with map.
         return mansPosition;
-    }//**************************
+    }
     public void setMansPosition(Position mansPosition) {//plz dont chng it change this method, it was created to interact with map.
         this.mansPosition = mansPosition;
     }//**************
