@@ -68,7 +68,7 @@ public class Combat {
 	}
 	
 
-	public void monsterTurn(int number) {
+	public void monsterTurn(int number, Creature monster) {
 		
 		if (number <9) {
 			//normal attack

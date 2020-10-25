@@ -125,4 +125,21 @@ class CombatTest {
 
 	}
 	
+	@Test
+	void monsterTurn0to8BasicAttack() {
+        Man m = new Man(500, 50, 0);
+        Dragon d = new Dragon(1000, 0, 50);
+        Combat c = new Combat(m, d);
+        
+
+	}
+	
+	@Test
+	void monsterTurn9CriticalAttack() {
+        Man m = new Man(500, 50, 0);
+        Dragon d = new Dragon(1000, 0, 50);
+        Combat c = new Combat(m, d);
+        
+
+	}
 }
