@@ -67,5 +67,162 @@ class MapTest {
             map.addTile(new Tile(new Position(5, -15)));
         });
     }
+
+    @Test
+    void mansSetPositionTest(){
+        Map map = new Map(3,5);
+        map.addTile(new Tile(new Position(1,2),true,false,false,false,false,false,false));
+        map.addTile(new Tile(new Position(1,3),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(2,3),false,false,false,false,false,false,true));
+        map.addTile(new Tile(new Position(3,2),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(3,3),false,false,true,false,false,false,false));
+        map.addTile(new Tile(new Position(3,5),false,false,false,false,false,true,false));
+        assertTrue(map.checkPosition(new Position(1,1)));
+    }
+
+    @Test
+    void mansMoveUpPositionTest(){
+        Map map = new Map(3,5);
+        map.addTile(new Tile(new Position(1,2),true,false,false,false,false,false,false));
+        map.addTile(new Tile(new Position(1,3),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(2,3),false,false,false,false,false,false,true));
+        map.addTile(new Tile(new Position(3,2),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(3,3),false,false,true,false,false,false,false));
+        map.addTile(new Tile(new Position(3,5),false,false,false,false,false,true,false));
+        Man player=new Man(100,100,100);
+        if(map.checkPosition(new Position(1,1))){
+            player.setMansPosition(new Position(1,1));
+        }
+        player.setMansPosition(map.movePosition(player.getMansPosition(),1));
+        assertEquals(1,player.getMansPosition().getX());
+        assertEquals(1,player.getMansPosition().getY());
+    }
+
+    @Test
+    void mansMoveDownPositionTest(){
+        Map map = new Map(3,5);
+        map.addTile(new Tile(new Position(1,2),true,false,false,false,false,false,false));
+        map.addTile(new Tile(new Position(1,3),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(2,3),false,false,false,false,false,false,true));
+        map.addTile(new Tile(new Position(3,2),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(3,3),false,false,true,false,false,false,false));
+        map.addTile(new Tile(new Position(3,5),false,false,false,false,false,true,false));
+        Man player=new Man(100,100,100);
+        if(map.checkPosition(new Position(1,1))){
+            player.setMansPosition(new Position(1,1));
+        }
+        player.setMansPosition(map.movePosition(player.getMansPosition(),3));
+        assertEquals(2,player.getMansPosition().getX());
+        assertEquals(1,player.getMansPosition().getY());
+    }
+
+    @Test
+    void mansMoveRightPositionTest(){
+        Map map = new Map(3,5);
+        map.addTile(new Tile(new Position(1,4),true,false,false,false,false,false,false));
+        map.addTile(new Tile(new Position(1,3),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(2,3),false,false,false,false,false,false,true));
+        map.addTile(new Tile(new Position(3,2),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(3,3),false,false,true,false,false,false,false));
+        map.addTile(new Tile(new Position(3,5),false,false,false,false,false,true,false));
+        Man player=new Man(100,100,100);
+        if(map.checkPosition(new Position(1,1))){
+            player.setMansPosition(new Position(1,1));
+        }
+        player.setMansPosition(map.movePosition(player.getMansPosition(),2));
+        assertEquals(1,player.getMansPosition().getX());
+        assertEquals(2,player.getMansPosition().getY());
+    }
+
+    @Test
+    void mansMoveLeftPositionTest(){
+        Map map = new Map(3,5);
+        map.addTile(new Tile(new Position(1,4),true,false,false,false,false,false,false));
+        map.addTile(new Tile(new Position(1,3),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(2,3),false,false,false,false,false,false,true));
+        map.addTile(new Tile(new Position(3,2),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(3,3),false,false,true,false,false,false,false));
+        map.addTile(new Tile(new Position(3,5),false,false,false,false,false,true,false));
+        Man player=new Man(100,100,100);
+        if(map.checkPosition(new Position(1,1))){
+            player.setMansPosition(new Position(1,1));
+        }
+        player.setMansPosition(map.movePosition(player.getMansPosition(),4));
+        assertEquals(1,player.getMansPosition().getX());
+        assertEquals(1,player.getMansPosition().getY());
+    }
+
+    @Test
+    void mansMoveLeftPositionInvalidTest(){
+        Map map = new Map(3,5);
+        map.addTile(new Tile(new Position(1,4),true,false,false,false,false,false,false));
+        map.addTile(new Tile(new Position(1,3),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(2,3),false,false,false,false,false,false,true));
+        map.addTile(new Tile(new Position(3,2),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(3,3),false,false,true,false,false,false,false));
+        map.addTile(new Tile(new Position(3,5),false,false,false,false,false,true,false));
+        Man player=new Man(100,100,100);
+        if(map.checkPosition(new Position(1,1))){
+            player.setMansPosition(new Position(1,1));
+        }
+        player.setMansPosition(map.movePosition(player.getMansPosition(),4));
+        assertEquals(1,player.getMansPosition().getX());
+        assertNotEquals(0,player.getMansPosition().getY());
+    }
+
+    @Test
+    void mansMoveRightPositionInvalidTest(){
+        Map map = new Map(3,5);
+        map.addTile(new Tile(new Position(1,4),true,false,false,false,false,false,false));
+        map.addTile(new Tile(new Position(1,3),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(2,3),false,false,false,false,false,false,true));
+        map.addTile(new Tile(new Position(3,2),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(3,3),false,false,true,false,false,false,false));
+        map.addTile(new Tile(new Position(3,5),false,false,false,false,false,true,false));
+        Man player=new Man(100,100,100);
+        if(map.checkPosition(new Position(1,1))){
+            player.setMansPosition(new Position(1,1));
+        }
+        player.setMansPosition(map.movePosition(player.getMansPosition(),2));
+        assertEquals(1,player.getMansPosition().getX());
+        assertNotEquals(1,player.getMansPosition().getY());
+    }
+
+    @Test
+    void mansMoveDownPositionInvalidTest(){
+        Map map = new Map(3,5);
+        map.addTile(new Tile(new Position(1,2),true,false,false,false,false,false,false));
+        map.addTile(new Tile(new Position(1,3),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(2,3),false,false,false,false,false,false,true));
+        map.addTile(new Tile(new Position(3,2),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(3,3),false,false,true,false,false,false,false));
+        map.addTile(new Tile(new Position(3,5),false,false,false,false,false,true,false));
+        Man player=new Man(100,100,100);
+        if(map.checkPosition(new Position(1,1))){
+            player.setMansPosition(new Position(1,1));
+        }
+        player.setMansPosition(map.movePosition(player.getMansPosition(),3));
+        assertNotEquals(1,player.getMansPosition().getX());
+        assertEquals(1,player.getMansPosition().getY());
+    }
+
+    @Test
+    void mansMoveUpPositionInvalidTest(){
+        Map map = new Map(3,5);
+        map.addTile(new Tile(new Position(1,2),true,false,false,false,false,false,false));
+        map.addTile(new Tile(new Position(1,3),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(2,3),false,false,false,false,false,false,true));
+        map.addTile(new Tile(new Position(3,2),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(3,3),false,false,true,false,false,false,false));
+        map.addTile(new Tile(new Position(3,5),false,false,false,false,false,true,false));
+        Man player=new Man(100,100,100);
+        if(map.checkPosition(new Position(1,1))){
+            player.setMansPosition(new Position(1,1));
+        }
+        player.setMansPosition(map.movePosition(player.getMansPosition(),1));
+        assertNotEquals(0,player.getMansPosition().getX());
+        assertEquals(1,player.getMansPosition().getY());
+    }
+
 }
 

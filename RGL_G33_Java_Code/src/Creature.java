@@ -1,8 +1,8 @@
 public abstract class Creature {
-
     private int hitPoints;
     private int attackPower;
     private int defensePower;
+    private Position creaturesPosition;
     private int maxHealth;
 
     public Creature(int hitPoints, int attackPower, int defensePower) {
@@ -13,7 +13,6 @@ public abstract class Creature {
         this.maxHealth = hitPoints + 500;
         //Every character starts with 500 extra HP. Can be adjusted or fixed in another way
     }
-
     public int getHitPoints() {
         return hitPoints;
     }
@@ -43,11 +42,16 @@ public abstract class Creature {
             throw new IllegalArgumentException("HP less than 0");
         }
     }
+    public Position getMansPosition() {  // plz dont chng it change this method, it was created to interact with map.
+        return creaturesPosition;
+    }
+    public void setMansPosition(Position mansPosition) {
+        this.creaturesPosition = mansPosition;
+    }
 
     public int getAttackPower() {
         return attackPower;
     }
-
     public int getDefensePower() {
         return defensePower;
     }

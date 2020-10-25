@@ -111,6 +111,8 @@ class CombatTest {
         
         assertEquals(1000, d.getHitPoints());
 	}
+
+
 	
 	@Test
 	void negativegDefensePowerDoesIncreaseDamage() {
@@ -302,5 +304,6 @@ class CombatTest {
         assertEquals(4000,d.getHitPoints());
 
 	}
+
 
 }
