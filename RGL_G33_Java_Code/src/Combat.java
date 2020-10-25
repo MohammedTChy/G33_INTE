@@ -68,13 +68,18 @@ public class Combat {
 	}
 	
 
-	public void monsterTurn(int number, Creature monster) {
+	public void monsterTurn(int number, Creature attacker, Creature defender) {
 		
 		if (number <9) {
-			//normal attack
+			int damage = basicAttack(attacker);
+			int finalDamage = finalDamageValue(damage, defender);
+			inflictDamage(finalDamage,defender);
+			
 		}
 		else if (number <10 && number > 8) {
-			//critical attack
+			int damage = criticalAttack(attacker);
+			int finalDamage = finalDamageValue(damage, defender);
+			inflictDamage(finalDamage,defender);
 		}
 		
 		//more can be added

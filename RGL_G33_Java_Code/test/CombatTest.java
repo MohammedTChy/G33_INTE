@@ -126,20 +126,23 @@ class CombatTest {
 	}
 	
 	@Test
-	void monsterTurn0to8BasicAttack() {
+	void monsterTurn0RollEquals8BasicAttack() {
         Man m = new Man(500, 50, 0);
         Dragon d = new Dragon(1000, 0, 50);
         Combat c = new Combat(m, d);
-        
+        c.monsterTurn(0, m, d);
 
+        assertEquals(1000,d.getHitPoints());
 	}
 	
 	@Test
-	void monsterTurn9CriticalAttack() {
+	void monsterTurn9RollEqualsCriticalAttack() {
         Man m = new Man(500, 50, 0);
         Dragon d = new Dragon(1000, 0, 50);
         Combat c = new Combat(m, d);
         
-
+        c.monsterTurn(9, m, d);
+        
+        assertEquals(950,d.getHitPoints());
 	}
 }
