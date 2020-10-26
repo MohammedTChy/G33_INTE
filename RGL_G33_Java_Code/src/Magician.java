@@ -1,10 +1,11 @@
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Magician extends Creature {
 
     private int mana;
-    private Map<String, Magic> magicBook; //Sparar spells här
+    private Map<String, Magic> magicBook = new HashMap<>(); //Sparar spells här
 
 
     public Magician(int hitPoints, int attackPower, int defensePower, int mana) {
@@ -23,7 +24,7 @@ public class Magician extends Creature {
     }
 
     public void addMagic(Magic magic) {
-        getMagicBook().put(magic.getName(), magic);
+        magicBook.put(magic.getName(), magic);
         //Add the specific class here into the magicBook
     }
 
@@ -47,6 +48,8 @@ public class Magician extends Creature {
             throw new IllegalArgumentException("Mana less than 0");
         }
     }
+
+
 
     @Override
     public String toString() {
