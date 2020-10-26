@@ -25,8 +25,6 @@ class ManTest {
         assertEquals( "HP less than 0", e.getMessage());
     }
 
-   //Need to figure out how to write this one
-    //Hope this works ~Tahmid
     @Test
     void setNegativeHitPointsThrowsIAE() {
         IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
@@ -71,6 +69,4 @@ class ManTest {
         m.setNewMaxHealth(500);
         assertEquals(3000, m.getMaxHealth());
     }
-
-
 }

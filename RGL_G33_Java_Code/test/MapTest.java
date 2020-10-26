@@ -91,11 +91,11 @@ class MapTest {
         map.addTile(new Tile(new Position(3,5),false,false,false,false,false,true,false));
         Man player=new Man(100,100,100);
         if(map.checkPosition(new Position(1,1))){
-            player.setMansPosition(new Position(1,1));
+            player.setCreaturePosition(new Position(1,1));
         }
-        player.setMansPosition(map.movePosition(player.getMansPosition(),1));
-        assertEquals(1,player.getMansPosition().getX());
-        assertEquals(1,player.getMansPosition().getY());
+        player.setCreaturePosition(map.movePosition(player.getCreaturePosition(),1));
+        assertEquals(1,player.getCreaturePosition().getX());
+        assertEquals(1,player.getCreaturePosition().getY());
     }
 
     @Test
@@ -109,11 +109,11 @@ class MapTest {
         map.addTile(new Tile(new Position(3,5),false,false,false,false,false,true,false));
         Man player=new Man(100,100,100);
         if(map.checkPosition(new Position(1,1))){
-            player.setMansPosition(new Position(1,1));
+            player.setCreaturePosition(new Position(1,1));
         }
-        player.setMansPosition(map.movePosition(player.getMansPosition(),3));
-        assertEquals(2,player.getMansPosition().getX());
-        assertEquals(1,player.getMansPosition().getY());
+        player.setCreaturePosition(map.movePosition(player.getCreaturePosition(),3));
+        assertEquals(2,player.getCreaturePosition().getX());
+        assertEquals(1,player.getCreaturePosition().getY());
     }
 
     @Test
@@ -127,11 +127,11 @@ class MapTest {
         map.addTile(new Tile(new Position(3,5),false,false,false,false,false,true,false));
         Man player=new Man(100,100,100);
         if(map.checkPosition(new Position(1,1))){
-            player.setMansPosition(new Position(1,1));
+            player.setCreaturePosition(new Position(1,1));
         }
-        player.setMansPosition(map.movePosition(player.getMansPosition(),2));
-        assertEquals(1,player.getMansPosition().getX());
-        assertEquals(2,player.getMansPosition().getY());
+        player.setCreaturePosition(map.movePosition(player.getCreaturePosition(),2));
+        assertEquals(1,player.getCreaturePosition().getX());
+        assertEquals(2,player.getCreaturePosition().getY());
     }
 
     @Test
@@ -145,11 +145,11 @@ class MapTest {
         map.addTile(new Tile(new Position(3,5),false,false,false,false,false,true,false));
         Man player=new Man(100,100,100);
         if(map.checkPosition(new Position(1,1))){
-            player.setMansPosition(new Position(1,1));
+            player.setCreaturePosition(new Position(1,1));
         }
-        player.setMansPosition(map.movePosition(player.getMansPosition(),4));
-        assertEquals(1,player.getMansPosition().getX());
-        assertEquals(1,player.getMansPosition().getY());
+        player.setCreaturePosition(map.movePosition(player.getCreaturePosition(),4));
+        assertEquals(1,player.getCreaturePosition().getX());
+        assertEquals(1,player.getCreaturePosition().getY());
     }
 
     @Test
@@ -163,11 +163,11 @@ class MapTest {
         map.addTile(new Tile(new Position(3,5),false,false,false,false,false,true,false));
         Man player=new Man(100,100,100);
         if(map.checkPosition(new Position(1,1))){
-            player.setMansPosition(new Position(1,1));
+            player.setCreaturePosition(new Position(1,1));
         }
-        player.setMansPosition(map.movePosition(player.getMansPosition(),4));
-        assertEquals(1,player.getMansPosition().getX());
-        assertNotEquals(0,player.getMansPosition().getY());
+        player.setCreaturePosition(map.movePosition(player.getCreaturePosition(),4));
+        assertEquals(1,player.getCreaturePosition().getX());
+        assertNotEquals(0,player.getCreaturePosition().getY());
     }
 
     @Test
@@ -181,11 +181,11 @@ class MapTest {
         map.addTile(new Tile(new Position(3,5),false,false,false,false,false,true,false));
         Man player=new Man(100,100,100);
         if(map.checkPosition(new Position(1,1))){
-            player.setMansPosition(new Position(1,1));
+            player.setCreaturePosition(new Position(1,1));
         }
-        player.setMansPosition(map.movePosition(player.getMansPosition(),2));
-        assertEquals(1,player.getMansPosition().getX());
-        assertNotEquals(1,player.getMansPosition().getY());
+        player.setCreaturePosition(map.movePosition(player.getCreaturePosition(),2));
+        assertEquals(1,player.getCreaturePosition().getX());
+        assertNotEquals(1,player.getCreaturePosition().getY());
     }
 
     @Test
@@ -199,11 +199,11 @@ class MapTest {
         map.addTile(new Tile(new Position(3,5),false,false,false,false,false,true,false));
         Man player=new Man(100,100,100);
         if(map.checkPosition(new Position(1,1))){
-            player.setMansPosition(new Position(1,1));
+            player.setCreaturePosition(new Position(1,1));
         }
-        player.setMansPosition(map.movePosition(player.getMansPosition(),3));
-        assertNotEquals(1,player.getMansPosition().getX());
-        assertEquals(1,player.getMansPosition().getY());
+        player.setCreaturePosition(map.movePosition(player.getCreaturePosition(),3));
+        assertNotEquals(1,player.getCreaturePosition().getX());
+        assertEquals(1,player.getCreaturePosition().getY());
     }
 
     @Test
@@ -217,11 +217,11 @@ class MapTest {
         map.addTile(new Tile(new Position(3,5),false,false,false,false,false,true,false));
         Man player=new Man(100,100,100);
         if(map.checkPosition(new Position(1,1))){
-            player.setMansPosition(new Position(1,1));
+            player.setCreaturePosition(new Position(1,1));
         }
-        player.setMansPosition(map.movePosition(player.getMansPosition(),1));
-        assertNotEquals(0,player.getMansPosition().getX());
-        assertEquals(1,player.getMansPosition().getY());
+        player.setCreaturePosition(map.movePosition(player.getCreaturePosition(),1));
+        assertNotEquals(0,player.getCreaturePosition().getX());
+        assertEquals(1,player.getCreaturePosition().getY());
     }
 
 }
