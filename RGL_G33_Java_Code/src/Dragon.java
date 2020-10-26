@@ -3,8 +3,7 @@ public class Dragon extends Creature {
     int exp = 200;
     int gold = 40;
 
-    public Dragon(int hitPoints, int attackPower, int defensePower) {
-        super(hitPoints, attackPower, defensePower);
+    public Dragon(int hitPoints, int attackPower, int defensePower) { super(hitPoints, attackPower, defensePower);
     }
 
     public int getExp() {
