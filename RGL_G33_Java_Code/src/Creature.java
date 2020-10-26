@@ -1,9 +1,12 @@
+import java.util.Map;
+
 public abstract class Creature {
     private int hitPoints;
     private int attackPower;
     private int defensePower;
     private Position creaturesPosition;
     private int maxHealth;
+    private Map<String, Magic> magicBook; //Sparar spells här
 
     public Creature(int hitPoints, int attackPower, int defensePower) {
         checkHitPointsNotBelowZero(hitPoints);
@@ -26,6 +29,18 @@ public abstract class Creature {
         if (maxHealth >= hitPoints) {
             this.hitPoints = hitPoints;
         }//This simply just check if the new HP is same or less than max HP
+    }
+
+    public void addMagic(Magic magic) {
+        getMagicBook().put(magic.getName(), magic);
+    }//Lägger in spell här
+
+    public void castMagic(String name, Creature creature) {
+        getMagicBook().get(name).checkIfResistOrWeak(creature);
+    }//Kunna kolla innan om NPC/Character har en resist eller weak på attacken
+
+    public Map<String, Magic> getMagicBook() {
+        return magicBook;
     }
 
     public int getMaxHealth() {

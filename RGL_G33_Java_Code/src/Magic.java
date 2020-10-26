@@ -1,12 +1,14 @@
 import java.util.List;
 
 
-public class Magic {
+public abstract class Magic {
 
     //Mana might be removed from here and implemeneted eleswhere
     private int manaCost;
     private final String name;
     private int damage;
+    private boolean fire = false;
+    private boolean frost = false;
 
 
     public Magic(String name, int manaCost, int damage) {
@@ -17,6 +19,25 @@ public class Magic {
         this.name = name;
         this.manaCost = manaCost;
         this.damage = damage;
+    }
+
+
+    public abstract void checkIfResistOrWeak(Creature creature);//Use magic spells from the character
+
+    public boolean isFire() {
+        return fire;
+    }
+
+    public boolean isFrost() {
+        return frost;
+    }
+
+    public void setFire(boolean fire) {
+        this.fire = fire;
+    }
+
+    public void setFrost(boolean frost) {
+        this.frost = frost;
     }
 
     //Find out what this spell can do kind of damage

@@ -1,9 +1,13 @@
 import java.util.ArrayList;
 import java.util.List;
+
+
+
 public class MagicBook {
     //using new List<>() works too, decied to go with ArrayList though
     //added static Magic before hand is possible, did not do it mainly because of not needed to yet
     private List<Magic> magicBook = new ArrayList<>();
+
 
 
 
@@ -14,7 +18,12 @@ public class MagicBook {
 
 
     public void addMagicBook(String name, int manaCost, int damage) {
-        magicBook.add(new Magic(name, manaCost, damage));
+        magicBook.add(new Magic(name, manaCost, damage) {
+            @Override
+            public void checkIfResistOrWeak(Creature creature) {
+
+            }
+        });
 
 
     }
