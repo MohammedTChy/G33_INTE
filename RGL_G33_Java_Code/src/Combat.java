@@ -6,6 +6,7 @@ public class Combat {
 	private Creature monster;
 	private boolean playerTurn;
 	private boolean activeCombat;
+	private int playerTurns;
 
 	public Combat(Creature player, Creature monster) { 
         if (player == monster) {
@@ -15,16 +16,15 @@ public class Combat {
 		this.player = player;
 		playerTurn = true;
 		activeCombat = true;
-		
 	}
 	
-	public Creature getMonster() {
+	protected Creature getMonster() {
 		return monster;
 	}
 	
-	public Creature getPlayer() {
+	protected Creature getPlayer() {
 		return player;
-	}	
+	}
 
 	public void turn() {
 
@@ -32,7 +32,7 @@ public class Combat {
 
 			if (player.getHitPoints() <= 0 || monster.getHitPoints() <= 0) {
 				activeCombat = false;
-			} 
+			}
 			
 			else if (!playerTurn) {
 				monsterTurn(random(), monster, player);
@@ -50,7 +50,7 @@ public class Combat {
 		}
 	}
 	
-	public void turnTester(int attackType, int totalTurns) {
+	protected void turnTester(int attackType, int totalTurns) {
 
 		do {
 
@@ -67,20 +67,21 @@ public class Combat {
 				//Note that turnTester uses monsterTurn method for simplicity
 				monsterTurn(attackType, player, monster);
 				playerTurn = false;
+				playerTurns++;
 			}
 			totalTurns--;
 		} while (activeCombat = true && totalTurns>0);
 	}
 
-	public int basicAttack(Creature attacker) {
+	protected int basicAttack(Creature attacker) {
 		return attacker.getAttackPower();
 	}
 	
-	public int criticalAttack(Creature attacker) {
+	protected int criticalAttack(Creature attacker) {
 		return 2*attacker.getAttackPower();
 	}
 	
-	public int finalDamageValue(int damageBeforeDefense, Creature defender) {
+	protected int finalDamageValue(int damageBeforeDefense, Creature defender) {
 		int finalDmg = damageBeforeDefense - defender.getDefensePower();
 		if (finalDmg < 0) {
 			finalDmg = 0;
@@ -88,7 +89,7 @@ public class Combat {
 		return finalDmg;
 	}
 	
-	public void inflictDamage(int finalDamageValue, Creature defender) {
+	protected void inflictDamage(int finalDamageValue, Creature defender) {
 		int currentHealth = defender.getHitPoints();
 		
 		
@@ -122,7 +123,7 @@ public class Combat {
 		
 		//Practically works like monster class, but may now have new implementations
 		//of abilities separate from monsters to choose from.
-		
+		playerTurns++;
 		if (number>1) {
 			number = 0;
 			}
@@ -151,6 +152,9 @@ public class Combat {
 		Random turn = new Random();
 		int attack = turn.nextInt(10);
 		return attack;
+	}
+	public int getPlayerTurns() {
+		return playerTurns;
 	}
 
 }
