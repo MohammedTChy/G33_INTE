@@ -88,5 +88,82 @@ class ManTest {
     void testToString() {
         Man m = new Man(2000, 200, 90);
         assertEquals("HP: 2000, Attack: 200, Defense: 90", m.toString());
+
+    @Test
+    void testGetSwordTypeIron() {
+        Man m = new Man(2000,200,92, Man.SwordType.Iron);
+        assertEquals(Man.SwordType.Iron, m.getSwordType());
+    }
+
+    @Test
+    void testGetSwordTypeSteel() {
+        Man m = new Man(2000,200,92, Man.SwordType.Steel);
+        assertEquals(Man.SwordType.Steel, m.getSwordType());
+    }
+
+    @Test
+    void testGetSwordTypeMitrhil() {
+        Man m = new Man(2000,200,92, Man.SwordType.Mithril);
+        assertEquals(Man.SwordType.Mithril, m.getSwordType());
+    }
+
+    @Test
+    void testGetAttackPowerWithIronSwordType() {
+        Man m = new Man(2000,200,92, Man.SwordType.Iron);
+        assertEquals(215, m.getAttackPower());
+    }
+
+    @Test
+    void testGetAttackPowerWithSteelSwordType() {
+        Man m = new Man(2000,200,92, Man.SwordType.Steel);
+        assertEquals(225, m.getAttackPower());
+    }
+
+    @Test
+    void testGetAttackPowerWithMithrilSwordType() {
+        Man m = new Man(2000,200,92, Man.SwordType.Mithril);
+        assertEquals(250, m.getAttackPower());
+    }
+
+    @Test
+    void testSetSwordTypeToIronWithoutObjectHavingAnyCurrentSword() {
+        Man m = new Man(2000,200,92);
+        m.setSwordType(Man.SwordType.Iron);
+        assertEquals(Man.SwordType.Iron, m.getSwordType());
+    }
+
+    @Test
+    void testSetSwordTypeToSteelWithoutObjectHavingAnyCurrentSword() {
+        Man m = new Man(2000,200,92);
+        m.setSwordType(Man.SwordType.Steel);
+        assertEquals(Man.SwordType.Steel, m.getSwordType());
+    }
+
+    @Test
+    void testSetSwordTypeToMithrilWithoutObjectHavingAnyCurrentSword() {
+        Man m = new Man(2000,200,92);
+        m.setSwordType(Man.SwordType.Mithril);
+        assertEquals(Man.SwordType.Mithril, m.getSwordType());
+    }
+
+    @Test
+    void testSetSwordTypeToIronWithObjectHavingSword() {
+        Man m = new Man(2000,200,92, Man.SwordType.Steel);
+        m.setSwordType(Man.SwordType.Iron);
+        assertEquals(Man.SwordType.Iron, m.getSwordType());
+    }
+
+    @Test
+    void testSetSwordTypeToSteelWithObjectHavingSword() {
+        Man m = new Man(2000,200,92, Man.SwordType.Iron);
+        m.setSwordType(Man.SwordType.Steel);
+        assertEquals(Man.SwordType.Steel, m.getSwordType());
+    }
+
+    @Test
+    void testSetSwordTypeToMithrilWithObjectHavingSword() {
+        Man m = new Man(2000,200,92, Man.SwordType.Steel);
+        m.setSwordType(Man.SwordType.Mithril);
+        assertEquals(Man.SwordType.Mithril, m.getSwordType());
     }
 }

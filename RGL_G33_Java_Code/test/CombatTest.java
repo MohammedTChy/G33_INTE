@@ -304,6 +304,38 @@ class CombatTest {
         assertEquals(4000,d.getHitPoints());
 
 	}
+	
+	@Test
+	void playerTurnStartsAtZero() {
+        Man m = new Man(500, 10, 0);
+        Dragon d = new Dragon(5000, 10, 0);
+        Combat c = new Combat(m, d);
+        
+        assertEquals(0,c.getPlayerTurns());
+	}
+	
+	@Test
+	void playerTurnCountsToOne() {
+        Man m = new Man(500, 10, 0);
+        Dragon d = new Dragon(5000, 10, 0);
+        Combat c = new Combat(m, d);
+        
+        c.playerTurn(1, m, d);
+        assertEquals(1,c.getPlayerTurns());
+	}
+	
+	@Test
+	void playerTurnCountsMoreThanOne() {
+        Man m = new Man(500, 10, 0);
+        Dragon d = new Dragon(5000, 10, 0);
+        Combat c = new Combat(m, d);
+        
+        c.playerTurn(1, m, d);
+        c.playerTurn(1, m, d);
+        c.playerTurn(1, m, d);
+        c.playerTurn(1, m, d);
+        assertEquals(4,c.getPlayerTurns());
+	}
 
 
 }
