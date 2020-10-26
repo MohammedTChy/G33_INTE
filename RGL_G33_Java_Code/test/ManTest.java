@@ -40,6 +40,26 @@ class ManTest {
     }
 
     @Test
+    void testSetAttackPower() {
+        Man m = new Man(1999, 200, 91);
+        m.setAttackPower(199);
+        assertEquals(199, m.getAttackPower());
+    }
+
+    @Test
+    void testNegativeAttackPowerInConstructor() {
+        Man m = new Man(1999, -200, 91);
+        assertEquals(0, m.getAttackPower());
+    }
+
+    @Test
+    void testSetNegativeAttackPower() {
+        Man m = new Man(1999, 200, 91);
+        m.setAttackPower(-199);
+        assertEquals(0, m.getAttackPower());
+    }
+
+    @Test
     void testGetDefensePower() {
         Man m = new Man(1999, 200, 91);
         assertEquals(91, m.getDefensePower());
@@ -49,12 +69,6 @@ class ManTest {
     void testManaIsZero() {
         Man m = new Man(1999, 200, 91);
         assertEquals(0,m.getMana());
-    }
-
-    @Test
-    void testToString() {
-        Man m = new Man(2000, 200, 90);
-        assertEquals("HP: 2000, Attack: 200, Defense: 90", m.toString());
     }
 
     @Test
@@ -68,5 +82,11 @@ class ManTest {
         Man m = new Man(2000,200,92);
         m.setNewMaxHealth(500);
         assertEquals(3000, m.getMaxHealth());
+    }
+    
+    @Test
+    void testToString() {
+        Man m = new Man(2000, 200, 90);
+        assertEquals("HP: 2000, Attack: 200, Defense: 90", m.toString());
     }
 }
