@@ -1,4 +1,3 @@
-import java.util.Map;
 
 public abstract class Creature {
     private int hitPoints;
@@ -6,7 +5,7 @@ public abstract class Creature {
     private int defensePower;
     private Position creaturesPosition;
     private int maxHealth;
-    private Map<String, Magic> magicBook; //Sparar spells här
+
 
     public Creature(int hitPoints, int attackPower, int defensePower) {
         checkHitPointsNotBelowZero(hitPoints);
@@ -16,6 +15,7 @@ public abstract class Creature {
         this.maxHealth = hitPoints + 500;
         //Every character starts with 500 extra HP. Can be adjusted or fixed in another way
     }
+
     public int getHitPoints() {
         return hitPoints;
     }
@@ -29,18 +29,6 @@ public abstract class Creature {
         if (maxHealth >= hitPoints) {
             this.hitPoints = hitPoints;
         }//This simply just check if the new HP is same or less than max HP
-    }
-
-    public void addMagic(Magic magic) {
-        getMagicBook().put(magic.getName(), magic);
-    }//Lägger in spell här
-
-    public void castMagic(String name, Creature creature) {
-        getMagicBook().get(name).checkIfResistOrWeak(creature);
-    }//Kunna kolla innan om NPC/Character har en resist eller weak på attacken
-
-    public Map<String, Magic> getMagicBook() {
-        return magicBook;
     }
 
     public int getMaxHealth() {
@@ -57,9 +45,11 @@ public abstract class Creature {
             throw new IllegalArgumentException("HP less than 0");
         }
     }
+
     public Position getMansPosition() {  // plz dont chng it change this method, it was created to interact with map.
         return creaturesPosition;
     }
+
     public void setMansPosition(Position mansPosition) {
         this.creaturesPosition = mansPosition;
     }
@@ -67,6 +57,7 @@ public abstract class Creature {
     public int getAttackPower() {
         return attackPower;
     }
+
     public int getDefensePower() {
         return defensePower;
     }

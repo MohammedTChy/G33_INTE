@@ -1,8 +1,10 @@
-import java.util.List;
+
+import java.util.Map;
 
 public class Magician extends Creature {
 
     private int mana;
+    private Map<String, Magic> magicBook; //Sparar spells här
 
 
     public Magician(int hitPoints, int attackPower, int defensePower, int mana) {
@@ -18,6 +20,21 @@ public class Magician extends Creature {
     public void setMana(int mana) {
         checkManaNotBelowZero(mana);
         this.mana = mana;
+    }
+
+    public void addMagic(Magic magic) {
+        getMagicBook().put(magic.getName(), magic);
+        //Add the specific class here into the magicBook
+    }
+
+    public void castMagic(String name, Creature creature) {
+        getMagicBook().get(name).checkIfResistOrWeak(creature);
+        //get the magic skill to use on the creature and check if that creature has a resist or weakness to the element
+        //Maybe redo this one but this is just a rough scetch of an idea
+    }
+
+    public Map<String, Magic> getMagicBook() {
+        return magicBook;
     }
 
     /*public void manaChange(int amount){
