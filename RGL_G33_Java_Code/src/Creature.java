@@ -1,5 +1,6 @@
 
 public abstract class Creature {
+
     private int hitPoints;
     private int attackPower;
     private int defensePower;
@@ -39,19 +40,20 @@ public abstract class Creature {
         this.maxHealth += newMaxHealth;
     }//raise the max health threshold because of item,skilll or etc
 
-
     private void checkHitPointsNotBelowZero(int hitPoints) {
         if (hitPoints < 0) {
             throw new IllegalArgumentException("HP less than 0");
         }
     }
 
-    public Position getMansPosition() {  // plz dont chng it change this method, it was created to interact with map.
+
+    public Position getCreaturePosition() {
         return creaturesPosition;
     }
 
-    public void setMansPosition(Position mansPosition) {
-        this.creaturesPosition = mansPosition;
+    public void setCreaturePosition(Position position) {
+        this.creaturesPosition = position;
+
     }
 
     public int getAttackPower() {
