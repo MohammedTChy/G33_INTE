@@ -1,3 +1,4 @@
+
 public abstract class Creature {
 
     private int hitPoints;
@@ -5,6 +6,7 @@ public abstract class Creature {
     private int defensePower;
     private Position creaturesPosition;
     private int maxHealth;
+
 
     public Creature(int hitPoints, int attackPower, int defensePower) {
         checkHitPointsNotBelowZero(hitPoints);
@@ -44,12 +46,14 @@ public abstract class Creature {
         }
     }
 
+
     public Position getCreaturePosition() {
         return creaturesPosition;
     }
 
     public void setCreaturePosition(Position position) {
         this.creaturesPosition = position;
+
     }
 
     public int getAttackPower() {
