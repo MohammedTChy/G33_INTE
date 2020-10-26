@@ -10,8 +10,8 @@ public abstract class Creature {
 
     public Creature(int hitPoints, int attackPower, int defensePower) {
         checkHitPointsNotBelowZero(hitPoints);
+        checkAttackPowerNotBelowZero(attackPower);
         this.hitPoints = hitPoints;
-        this.attackPower = attackPower;
         this.defensePower = defensePower;
         this.maxHealth = hitPoints + 500;
         //Every character starts with 500 extra HP. Can be adjusted or fixed in another way
@@ -58,6 +58,19 @@ public abstract class Creature {
 
     public int getAttackPower() {
         return attackPower;
+    }
+
+    private void checkAttackPowerNotBelowZero(int attack) {
+        if (attack <0 ) {
+            attackPower = 0;
+        }
+        else {
+            attackPower = attack;
+        }
+    }
+
+    public void setAttackPower(int attack) {
+        checkAttackPowerNotBelowZero(attack);
     }
 
     public int getDefensePower() {

@@ -40,6 +40,26 @@ class DragonTest {
     }
 
     @Test
+    void testSetAttackPower() {
+        Dragon m = new Dragon(2000, 200, 92);
+        m.setAttackPower(199);
+        assertEquals(199, m.getAttackPower());
+    }
+
+    @Test
+    void testNegativeAttackPowerInConstructor() {
+        Dragon m = new Dragon(2000, -200, 92);
+        assertEquals(0, m.getAttackPower());
+    }
+
+    @Test
+    void testSetNegativeAttackPower() {
+        Dragon m = new Dragon(2000, 200, 92);
+        m.setAttackPower(-199);
+        assertEquals(0, m.getAttackPower());
+    }
+
+    @Test
     void testGetDefensePower() {
         Dragon m = new Dragon(2000, 200, 92);
         assertEquals(92, m.getDefensePower());

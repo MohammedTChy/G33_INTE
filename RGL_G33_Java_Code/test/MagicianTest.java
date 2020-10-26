@@ -42,6 +42,26 @@ class MagicianTest {
     }
 
     @Test
+    void testSetAttackPower() {
+        Magician m = new Magician(1999, 200, 91, 40);
+        m.setAttackPower(199);
+        assertEquals(199, m.getAttackPower());
+    }
+
+    @Test
+    void testNegativeAttackPowerInConstructor() {
+        Magician m = new Magician(1999, -200, 91, 40);
+        assertEquals(0, m.getAttackPower());
+    }
+
+    @Test
+    void testSetNegativeAttackPower() {
+        Magician m = new Magician(1999, 200, 91, 40);
+        m.setAttackPower(-199);
+        assertEquals(0, m.getAttackPower());
+    }
+
+    @Test
     void testGetDefensePower() {
         Magician m = new Magician(1999, 200, 91, 40);
         assertEquals(91, m.getDefensePower());
