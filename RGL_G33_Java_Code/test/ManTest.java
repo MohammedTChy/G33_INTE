@@ -167,4 +167,17 @@ class ManTest {
         m.setSwordType(Man.SwordType.Mithril);
         assertEquals(Man.SwordType.Mithril, m.getSwordType());
     }
+
+    @Test
+    void testIsNotResistantToFire() {
+        Man man = new Man(2000,200,92, Man.SwordType.Iron);
+        assertFalse(man.checkIfResistant(new Fire(10, 50)));
+    }
+
+    @Test
+    void testIsNotResistantToFrost() {
+        Man man = new Man(2000,200,92, Man.SwordType.Steel);
+        assertFalse(man.checkIfResistant(new Frost(10, 50)));
+    }
+
 }

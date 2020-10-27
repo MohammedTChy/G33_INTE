@@ -3,6 +3,11 @@ public class Dragon extends Creature {
     int exp = 200;
     int gold = 40;
 
+    @Override
+    public boolean checkIfResistant(Magic magic) {
+        return magic instanceof Fire;
+    }
+
     public Dragon(int hitPoints, int attackPower, int defensePower) { super(hitPoints, attackPower, defensePower);
     }
 

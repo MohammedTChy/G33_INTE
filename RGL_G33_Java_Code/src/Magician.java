@@ -1,17 +1,22 @@
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class Magician extends Creature {
 
+    private final static int DRAGON_EXTRA_DMG = 30;
+    private final static int MAGICIAN_PENALTY_DMG = 50;
     private int mana;
     private Map<String, Magic> magicBook = new HashMap<>(); //Sparar spells här
-
 
     public Magician(int hitPoints, int attackPower, int defensePower, int mana) {
         super(hitPoints, attackPower, defensePower);
         checkManaNotBelowZero(mana);
         this.mana = mana;
+    }
+
+    @Override
+    public boolean checkIfResistant(Magic magic) {
+        return (magic instanceof Frost || magic instanceof Fire);
     }
 
     public int getMana() {
@@ -28,10 +33,39 @@ public class Magician extends Creature {
         //Add the specific class here into the magicBook
     }
 
+    private void dealDamage(Creature creature, boolean isResistant, int damage, int manaCost) {
+
+        if (getMana() >= manaCost) {
+            if (isResistant) {
+                creature.setHitPoints(creature.getHitPoints() - damage / 2);
+            } else {
+                creature.setHitPoints(creature.getHitPoints() - damage);
+            }
+            setMana(getMana() - manaCost);
+        } else {
+            // not enough mana
+        }
+    }
+
     public void castMagic(String name, Creature creature) {
-        getMagicBook().get(name).checkIfResistOrWeak(creature);
-        //get the magic skill to use on the creature and check if that creature has a resist or weakness to the element
-        //Maybe redo this one but this is just a rough scetch of an idea
+        Magic magic = getMagicBook().get(name);
+        if (magic != null && creature != null) {
+            if (creature instanceof Man) {
+
+                boolean isResistant = creature.checkIfResistant(magic);
+                dealDamage(creature, isResistant, magic.getDamage(), magic.getManaCost());
+
+            } else if (creature instanceof Dragon) {
+
+                boolean isResistant = creature.checkIfResistant(magic);
+                dealDamage(creature, isResistant, magic.getDamage() + DRAGON_EXTRA_DMG, magic.getManaCost());
+
+            } else if (creature instanceof Magician) {
+
+                boolean isResistant = creature.checkIfResistant(magic);
+                dealDamage(creature, isResistant, magic.getDamage() - MAGICIAN_PENALTY_DMG, magic.getManaCost());
+            }
+        }
     }
 
     public Map<String, Magic> getMagicBook() {
@@ -48,8 +82,6 @@ public class Magician extends Creature {
             throw new IllegalArgumentException("Mana less than 0");
         }
     }
-
-
 
     @Override
     public String toString() {

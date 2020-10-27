@@ -6,6 +6,11 @@ public class Man extends Creature {
         Iron, Steel, Mithril;
     }
 
+    @Override
+    public boolean checkIfResistant(Magic magic) {
+        return false;
+    }
+
     private SwordType swordType;
     
     public Man(int hitPoints, int attackPower, int defensePower) {

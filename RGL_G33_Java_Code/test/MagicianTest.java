@@ -125,7 +125,166 @@ class MagicianTest {
         gandalf.addMagic(m);
         gandalf.addMagic(n);
         assertTrue(gandalf.getMagicBook().containsKey("Fire") && gandalf.getMagicBook().get("Fire") != null && gandalf.getMagicBook().containsKey("Frost") && gandalf.getMagicBook().get("Frost") != null );
-
     }
 
+    @Test
+    void testIsResistantToFire() {
+        Magician magician = new Magician(2000,200,92, 100);
+        assertTrue(magician.checkIfResistant(new Fire(10, 50)));
+    }
+
+    @Test
+    void testIsResistantToFrost() {
+        Magician magician = new Magician(2000,200,92, 100);
+        assertTrue(magician.checkIfResistant(new Frost(10, 50)));
+    }
+
+    /**
+     *  Test Magician vs. Man
+     */
+
+    @Test
+    void testMagicianAttacksManWithNoMagic() {
+        Magician magician = new Magician(2000,200,92, 100);
+        Man man = new Man(2000,200,92, Man.SwordType.Steel);
+
+        magician.castMagic("no magic", man);
+
+        assertEquals(2000, man.getHitPoints());
+    }
+
+    @Test
+    void testMagicianAttacksManWithFireMagic() {
+        Magician magician = new Magician(2000,200,92, 100);
+        Man man = new Man(2000,200,92, Man.SwordType.Steel);
+
+        Magic fire = new Fire(50, 10);
+        magician.addMagic(fire);
+
+        magician.castMagic(fire.getName(), man);
+        assertEquals(1990, man.getHitPoints());
+    }
+
+    @Test
+    void testMagicianAttacksManWithFrostMagic() {
+        Magician magician = new Magician(2000,200,92, 100);
+        Man man = new Man(2000,200,92, Man.SwordType.Steel);
+
+        Magic frost = new Frost(50, 100);
+        magician.addMagic(frost);
+
+        magician.castMagic(frost.getName(), man);
+        assertEquals(1900, man.getHitPoints());
+    }
+
+    /**
+     *  Test Magician vs. Dragon
+     */
+
+    @Test
+    void testMagicianAttacksDragonWithNoMagic() {
+        Magician magician = new Magician(2000,200,92, 100);
+        Dragon dragon = new Dragon(2000,200,92);
+
+        magician.castMagic("no magic", dragon);
+
+        assertEquals(2000, magician.getHitPoints());
+    }
+
+    @Test
+    void testMagicianAttacksDragonWithFireMagic() {
+        Magician magician = new Magician(2000,200,92, 100);
+        Dragon dragon = new Dragon(2000,200,92);
+
+        Magic fire = new Fire(50, 100);
+        magician.addMagic(fire);
+
+        magician.castMagic(fire.getName(), dragon);
+        assertEquals(1935, dragon.getHitPoints());
+    }
+
+    @Test
+    void testMagicianAttacksDragonWithFrostMagic() {
+        Magician magician = new Magician(2000,200,92, 100);
+        Dragon dragon = new Dragon(2000,200,92);
+
+        Magic frost = new Frost(50, 100);
+        magician.addMagic(frost);
+
+        magician.castMagic(frost.getName(), dragon);
+        assertEquals(1870, dragon.getHitPoints());
+    }
+
+    /**
+     *  Test Magician vs. Magician
+     */
+
+    @Test
+    void testMagicianAttacksMagicianWithNoMagic() {
+        Magician magician = new Magician(2000,200,92, 100);
+        Magician magician1 = new Magician(2005,203,90, 80);
+
+        magician.castMagic("no magic", magician1);
+        assertEquals(2005, magician1.getHitPoints());
+    }
+
+    @Test
+    void testMagicianAttacksMagicianWithFireMagic() {
+        Magician magician = new Magician(2000,200,92, 100);
+        Magician magician1 = new Magician(2005,203,90, 80);
+
+        Magic fire = new Fire(50, 100);
+        magician.addMagic(fire);
+
+        magician.castMagic(fire.getName(), magician1);
+        assertEquals(1980, magician1.getHitPoints());
+    }
+
+    @Test
+    void testMagicianAttacksMagicianWithFrostMagic() {
+        Magician magician = new Magician(2000,200,92, 100);
+        Magician magician1 = new Magician(2005,203,90, 80);
+
+        Magic frost = new Frost(50, 100);
+        magician.addMagic(frost);
+
+        magician.castMagic(frost.getName(), magician1);
+        assertEquals(1980, magician1.getHitPoints());
+    }
+
+    @Test
+    void testTotalManaHasDecreasedAfterCastingMagic() {
+        Magician magician = new Magician(2000,200,92, 100);
+        Man man = new Man(2000,200,92, Man.SwordType.Steel);
+
+        Magic frost = new Frost(50, 100);
+        magician.addMagic(frost);
+
+        magician.castMagic(frost.getName(), man);
+        assertEquals(50, magician.getMana());
+    }
+
+    @Test
+    void testMagicDoesNotDealDamageWhenNotEnoughMana() {
+        Magician magician = new Magician(2000,200,92, 100);
+        Man man = new Man(2000,200,92, Man.SwordType.Steel);
+
+        Magic frost = new Frost(110, 100);
+        magician.addMagic(frost);
+
+        magician.castMagic(frost.getName(), man);
+        assertEquals(2000, magician.getHitPoints());
+    }
+
+    @Test
+    void testMagicDoesNotUseManaWhenManaNotEnough() {
+        Magician magician = new Magician(2000,200,92, 100);
+        Man man = new Man(2000,200,92, Man.SwordType.Steel);
+
+        Magic frost = new Frost(110, 100);
+        magician.addMagic(frost);
+
+        magician.castMagic(frost.getName(), man);
+        assertEquals(100, magician.getMana());
+    }
 }
