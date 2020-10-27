@@ -76,4 +76,16 @@ class DragonTest {
         Dragon dragon = new Dragon(2000, 200, 92);
         assertFalse(dragon.checkIfResistant(new Frost(10, 50)));
     }
+
+    @Test
+    void testIsNotResistantToFire() {
+        Dragon dragon = new Dragon(2000, 200, 92);
+        assertTrue(dragon.checkIfResistant(new Fire(10, 50)));
+    }
+
+    @Test
+    void testIsResistantToFrost() {
+        Dragon dragon = new Dragon(2000, 200, 92);
+        assertFalse(dragon.checkIfResistant(new Frost(10, 50)));
+    }
 }
