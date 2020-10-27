@@ -53,7 +53,6 @@ public abstract class Creature {
     public void setCreaturePosition(Position position) {
         this.creaturesPosition = position;
     }
-
     public int getAttackPower() {
         return attackPower;
     }
