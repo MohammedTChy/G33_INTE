@@ -46,16 +46,13 @@ public abstract class Creature {
         }
     }
 
-
     public Position getCreaturePosition() {
         return creaturesPosition;
     }
 
     public void setCreaturePosition(Position position) {
         this.creaturesPosition = position;
-
     }
-
     public int getAttackPower() {
         return attackPower;
     }

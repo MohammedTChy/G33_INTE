@@ -88,7 +88,8 @@ class ManTest {
     void testToString() {
         Man m = new Man(2000, 200, 90);
         assertEquals("HP: 2000, Attack: 200, Defense: 90", m.toString());
-
+    }
+    
     @Test
     void testGetSwordTypeIron() {
         Man m = new Man(2000,200,92, Man.SwordType.Iron);
