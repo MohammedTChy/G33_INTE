@@ -110,9 +110,9 @@ public class Combat {
 	public void monsterTurn(int number, Creature attacker, Creature defender) {
 
 		monsterTurns++;
-		System.out.println("Monster turns: " + monsterTurns);
+
 		boolean bonusDamage = checkIfDragonSuperAttackAvailable(attacker, monsterTurns);
-		System.out.println("Bonus Damage: " + bonusDamage);
+
 		int damage = 0;
 
 		if (bonusDamage) {
