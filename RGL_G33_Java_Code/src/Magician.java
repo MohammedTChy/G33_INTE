@@ -29,7 +29,14 @@ public class Magician extends Creature {
     }
 
     public void addMagic(Magic magic) {
-        magicBook.put(magic.getName(), magic);
+        String magicName = magic.getName();
+        if (magicBook.get(magicName) == null) {
+            magicBook.put(magic.getName(), magic);
+        }
+        else {
+            throw new IllegalStateException("Spell already exists");
+        }
+
         //Add the specific class here into the magicBook
     }
 

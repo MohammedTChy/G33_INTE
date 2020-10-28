@@ -287,4 +287,38 @@ class MagicianTest {
         magician.castMagic(frost.getName(), man);
         assertEquals(100, magician.getMana());
     }
+
+    @Test
+    void testAddMagicToMagicBook() {
+        Fire magic = new Fire(30, 20);
+        Magician magician = new Magician(2000, 200, 92, 100);
+        magician.addMagic(magic);
+        assertEquals("Fire", magician.getMagicBook().get(magic.getName()).getName());
+    }
+
+    @Test
+    void testMagicAlreadyExistsInBook() {
+        Fire magic = new Fire(30,20) ;
+        Magician magician = new Magician(2000,200,92, 100);
+        magician.addMagic(magic);
+
+        IllegalStateException e = assertThrows(IllegalStateException.class, () -> {
+            magician.addMagic(magic);
+
+        });
+        assertEquals("Spell already exists", e.getMessage());
+    }
+
+    @Test
+    void testAddTwoDifferentTypesOfMagicToMagicBook() {
+        Fire fire = new Fire(30, 20);
+        Frost frost = new Frost(40, 30);
+
+        Magician magician = new Magician(2000, 200, 92, 100);
+        magician.addMagic(fire);
+        magician.addMagic(frost);
+        assertEquals("Fire", magician.getMagicBook().get(fire.getName()).getName());
+        assertEquals("Frost", magician.getMagicBook().get(frost.getName()).getName());
+
+    }
 }
