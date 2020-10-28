@@ -142,7 +142,8 @@ public class Combat {
 		//Practically works like monster class, but may now have new implementations
 		//of abilities separate from monsters to choose from.
 		playerTurns++;
-
+		
+		//if statement sets all non critical attacks to be basic attacks
 		if (number>1) {
 			number = 0;
 			}
@@ -157,12 +158,13 @@ public class Combat {
 			inflictDamage(criticalDamage,defender);
 			break;
 		case 2:
+			//intended opening for player abilities/attacks
+			//cases can be added and represent choices
 			break;
 		default:
 			break;
 		}
-		
-		//more can be added, even non combat effects
+
 		
 	}	
 	
