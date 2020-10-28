@@ -1,4 +1,3 @@
-
 public abstract class Creature {
 
     private int hitPoints;
@@ -6,7 +5,6 @@ public abstract class Creature {
     private int defensePower;
     private Position creaturesPosition;
     private int maxHealth;
-
 
     public Creature(int hitPoints, int attackPower, int defensePower) {
         checkHitPointsNotBelowZero(hitPoints);
@@ -16,6 +14,8 @@ public abstract class Creature {
         this.maxHealth = hitPoints + 500;
         //Every character starts with 500 extra HP. Can be adjusted or fixed in another way
     }
+
+    public abstract boolean checkIfResistant(Magic magic);
 
     public int getHitPoints() {
         return hitPoints;
@@ -53,21 +53,21 @@ public abstract class Creature {
     public void setCreaturePosition(Position position) {
         this.creaturesPosition = position;
     }
+
     public int getAttackPower() {
         return attackPower;
     }
 
-    private void checkAttackPowerNotBelowZero(int attack) {
-        if (attack <0 ) {
-            attackPower = 0;
-        }
-        else {
-            attackPower = attack;
-        }
-    }
-
     public void setAttackPower(int attack) {
         checkAttackPowerNotBelowZero(attack);
+    }
+
+    private void checkAttackPowerNotBelowZero(int attack) {
+        if (attack < 0) {
+            attackPower = 0;
+        } else {
+            attackPower = attack;
+        }
     }
 
     public int getDefensePower() {

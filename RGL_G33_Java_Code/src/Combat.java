@@ -7,6 +7,7 @@ public class Combat {
 	private boolean playerTurn;
 	private boolean activeCombat;
 	private int playerTurns;
+	private int monsterTurns;
 
 	public Combat(Creature player, Creature monster) { 
         if (player == monster) {
@@ -67,7 +68,6 @@ public class Combat {
 				//Note that turnTester uses monsterTurn method for simplicity
 				monsterTurn(attackType, player, monster);
 				playerTurn = false;
-				playerTurns++;
 			}
 			totalTurns--;
 		} while (activeCombat = true && totalTurns>0);
@@ -91,8 +91,7 @@ public class Combat {
 	
 	protected void inflictDamage(int finalDamageValue, Creature defender) {
 		int currentHealth = defender.getHitPoints();
-		
-		
+
 		int finalHealth = currentHealth-finalDamageValue;
 		if (finalHealth<0) {
 			finalHealth = 0;
@@ -100,23 +99,37 @@ public class Combat {
 		defender.setHitPoints(finalHealth);
 	}
 
+	private boolean checkIfDragonSuperAttackAvailable(Creature attacker, int monsterTurns) {
+		if (attacker instanceof Dragon && monsterTurns == 4 && attacker.getAttackPower() >0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	public void monsterTurn(int number, Creature attacker, Creature defender) {
-		
+
+		monsterTurns++;
+		System.out.println("Monster turns: " + monsterTurns);
+		boolean bonusDamage = checkIfDragonSuperAttackAvailable(attacker, monsterTurns);
+		System.out.println("Bonus Damage: " + bonusDamage);
+		int damage = 0;
+
+		if (bonusDamage) {
+			damage += Dragon.SUPER_ATTACK_DMG; // damage = 400
+		}
 		if (number <9) {
-			int damage = basicAttack(attacker);
+			damage += basicAttack(attacker);
 			int finalDamage = finalDamageValue(damage, defender);
 			inflictDamage(finalDamage,defender);
-			
-		}
-		else if (number <10 && number > 8) {
-			int damage = criticalAttack(attacker);
+		} else if (number <10 && number > 8) {
+			damage += criticalAttack(attacker);
 			int finalDamage = finalDamageValue(damage, defender);
 			inflictDamage(finalDamage,defender);
+		} else {
+			inflictDamage(damage,defender);
 		}
-		
 		//more can be added, even non combat effects
-		
 	}
 
 	public void playerTurn(int number, Creature attacker, Creature defender) {
@@ -124,6 +137,7 @@ public class Combat {
 		//Practically works like monster class, but may now have new implementations
 		//of abilities separate from monsters to choose from.
 		playerTurns++;
+
 		if (number>1) {
 			number = 0;
 			}

@@ -66,42 +66,14 @@ class DragonTest {
     }
 
     @Test
-    void testGetExp() {
-        Dragon m = new Dragon(2000, 200, 92);
-        assertEquals(200, m.getExp());
+    void testIsNotResistantToFire() {
+        Dragon dragon = new Dragon(2000, 200, 92);
+        assertTrue(dragon.checkIfResistant(new Fire(10, 50)));
     }
 
     @Test
-    void testSetExp() {
-        Dragon m = new Dragon(2000, 200, 92);
-        m.setExp(1999);
-        assertEquals(1999, m.getExp());
-    }
-
-    @Test
-    void testSetExpToNegative() {
-        Dragon m = new Dragon(2000, 200, 92);
-        m.setExp(-2000);
-        assertEquals(0, m.getExp());
-    }
-
-    @Test
-    void testGetGold() {
-        Dragon m = new Dragon(2000, 200, 92);
-        assertEquals(40, m.getGold());
-    }
-
-    @Test
-    void testSetGold() {
-        Dragon m = new Dragon(2000, 200, 92);
-        m.setGold(1998);
-        assertEquals(1998, m.getGold());
-    }
-
-    @Test
-    void testSetGoldToNegative() {
-        Dragon m = new Dragon(2000, 200, 92);
-        m.setGold(-40);
-        assertEquals(0, m.getGold());
+    void testIsResistantToFrost() {
+        Dragon dragon = new Dragon(2000, 200, 92);
+        assertFalse(dragon.checkIfResistant(new Frost(10, 50)));
     }
 }

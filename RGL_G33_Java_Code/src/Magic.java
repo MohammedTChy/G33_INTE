@@ -10,7 +10,6 @@ public abstract class Magic {
     private boolean fire = false;
     private boolean frost = false;
 
-
     public Magic(String name, int manaCost, int damage) {
         if (manaCost < 0 || damage < 0) {
             throw new IllegalArgumentException("Must have a name, manacost/damage must be either 0 or above");
@@ -20,9 +19,6 @@ public abstract class Magic {
         this.manaCost = manaCost;
         this.damage = damage;
     }
-
-
-    public abstract void checkIfResistOrWeak(Creature creature);//Use magic spells from the character
 
     public boolean isFire() {
         return fire;

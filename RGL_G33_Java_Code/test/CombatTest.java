@@ -184,18 +184,14 @@ class CombatTest {
 	
 	@Test
 	void turnTester5TurnsBasicAttacks() {
-        Man m = new Man(500, 50, 0);
-        Dragon d = new Dragon(1000, 50, 0);
-        Combat c = new Combat(m, d);
+        Man man = new Man(500, 50, 0);
+        Magician magician = new Magician(1000, 50, 0, 40);
+        Combat c = new Combat(man, magician);
 
         c.turnTester(1,5);
         
-        //in 5 turns man basicAttacks 3 times
-        //dragon basicAttacks 2 times
-        //resulting healthpoints should be 400 and 850
-        
-        assertEquals(850,d.getHitPoints());
-        assertEquals(400,m.getHitPoints());
+        assertEquals(850,magician.getHitPoints());
+        assertEquals(400,man.getHitPoints());
 
 	}
 	
@@ -337,5 +333,123 @@ class CombatTest {
         assertEquals(4,c.getPlayerTurns());
 	}
 
+    @Test
+    void testDragonNoSpecialAttackWhenTotalTurnsAreLessThanFour() {
+        Man m = new Man(500, 10, 0);
+        Dragon d = new Dragon(500, 10, 0);
+        Combat c = new Combat(d, m);
 
+        c.turnTester(7, 3);
+
+        assertEquals(490, d.getHitPoints());
+        assertEquals(480, m.getHitPoints());
+    }
+
+    @Test
+    void testDragonSpecialAttackWhenTotalTurnsAreMoreThanFour() {
+        Man m = new Man(500, 10, 0);
+        Dragon d = new Dragon(500, 10, 0);
+        Combat c = new Combat(m, d);
+
+        c.turnTester(7, 5);
+
+        assertEquals(470, d.getHitPoints());
+        assertEquals(80, m.getHitPoints());
+    }
+
+    @Test
+    void testDragonSpecialAttackWhenTotalTurnsAreFour() {
+        Man m = new Man(500, 10, 0);
+        Dragon d = new Dragon(500, 10, 0);
+        Combat c = new Combat(m, d);
+
+        c.turnTester(7, 5);
+
+        assertEquals(470, d.getHitPoints());
+        assertEquals(80, m.getHitPoints());
+    }
+
+    @Test
+    void testDragonSpecialAttackWithCriticalStrike() {
+        Man m = new Man(500, 10, 0);
+        Dragon d = new Dragon(500, 10, 0);
+        Combat c = new Combat(m, d);
+
+        c.turnTester(9, 10);
+
+        assertEquals(400, d.getHitPoints());
+        assertEquals(0, m.getHitPoints());
+    }
+
+    @Test
+    void testDragonNoSpecialAttackWithCriticalStrike() {
+            Man m = new Man(500, 10, 0);
+            Dragon d = new Dragon(500, 10, 0);
+            Combat c = new Combat(d, m);
+
+            c.turnTester(9, 3);
+
+            assertEquals(480, d.getHitPoints());
+            assertEquals(460, m.getHitPoints());
+        }
+
+    @Test
+    void testDragonSpecialAttackWithOutCriticalStrike() {
+        Man m = new Man(500, 10, 0);
+        Dragon d = new Dragon(500, 10, 0);
+        Combat c = new Combat(m, d);
+
+        c.turnTester(7, 10);
+
+        assertEquals(450, d.getHitPoints());
+        assertEquals(50, m.getHitPoints());
+    }
+
+    @Test
+    void testDragonNoSpecialAttackWithOutCriticalStrike() {
+        Man m = new Man(500, 10, 0);
+        Dragon d = new Dragon(500, 10, 0);
+        Combat c = new Combat(d, m);
+
+        c.turnTester(7, 3);
+
+        assertEquals(490, d.getHitPoints());
+        assertEquals(480, m.getHitPoints());
+    }
+
+    @Test
+    void testDragonNoSpecialAttackWhenAttackPowerIsNegative() {
+        Man m = new Man(500, 10, 0);
+        Dragon d = new Dragon(500, -10, 0);
+        Combat c = new Combat(d, m);
+
+        c.turnTester(9, 3);
+
+        assertEquals(480, d.getHitPoints());
+        assertEquals(500, m.getHitPoints());
+    }
+
+    @Test
+    void testDragonNoSpecialAttackWhenAttackPowerIsZero() {
+        Man m = new Man(500, 10, 0);
+        Dragon d = new Dragon(500, 0, 0);
+        Combat c = new Combat(d, m);
+
+        c.turnTester(9, 3);
+
+        assertEquals(480, d.getHitPoints());
+        assertEquals(500, m.getHitPoints());
+    }
+
+    @Test
+    void testNoSpecialAttackWhenCreatureIsNotDragon() {
+        Man man = new Man(500, 10, 0);
+        Magician magician = new Magician(500, 10, 0, 60);
+        Combat c = new Combat(magician, man);
+
+        c.turnTester(3, 3);
+
+        assertEquals(490, magician.getHitPoints());
+        assertEquals(480, man.getHitPoints());
+    }
 }
