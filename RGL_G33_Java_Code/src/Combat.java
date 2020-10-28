@@ -81,18 +81,25 @@ public class Combat {
 		return 2*attacker.getAttackPower();
 	}
 	
+	/* Commented out because method is now obsolete, was merged with inflictDamage
+	 * 
 	protected int finalDamageValue(int damageBeforeDefense, Creature defender) {
 		int finalDmg = damageBeforeDefense - defender.getDefensePower();
 		if (finalDmg < 0) {
 			finalDmg = 0;
 		}
 		return finalDmg;
-	}
+	} 
+	*/ 
 	
 	protected void inflictDamage(int finalDamageValue, Creature defender) {
 		int currentHealth = defender.getHitPoints();
+		int finalDmg = finalDamageValue - defender.getDefensePower();
+		if (finalDmg < 0) {
+			finalDmg = 0;
+		}
 
-		int finalHealth = currentHealth-finalDamageValue;
+		int finalHealth = currentHealth-finalDmg;
 		if (finalHealth<0) {
 			finalHealth = 0;
 		}
@@ -120,12 +127,10 @@ public class Combat {
 		}
 		if (number <9) {
 			damage += basicAttack(attacker);
-			int finalDamage = finalDamageValue(damage, defender);
-			inflictDamage(finalDamage,defender);
+			inflictDamage(damage,defender);
 		} else if (number <10 && number > 8) {
 			damage += criticalAttack(attacker);
-			int finalDamage = finalDamageValue(damage, defender);
-			inflictDamage(finalDamage,defender);
+			inflictDamage(damage,defender);
 		} else {
 			inflictDamage(damage,defender);
 		}
@@ -145,13 +150,11 @@ public class Combat {
 		switch(number) {
 		case 0:
 			int damage = basicAttack(attacker);
-			int finalDamage = finalDamageValue(damage, defender);
-			inflictDamage(finalDamage,defender);
+			inflictDamage(damage,defender);
 			break;
 		case 1:
 			int criticalDamage = criticalAttack(attacker);
-			int criticalFinalDamage = finalDamageValue(criticalDamage, defender);
-			inflictDamage(criticalFinalDamage,defender);
+			inflictDamage(criticalDamage,defender);
 			break;
 		case 2:
 			break;
@@ -162,13 +165,19 @@ public class Combat {
 		//more can be added, even non combat effects
 		
 	}	
-	public int random() {
+	
+	protected int random() {
 		Random turn = new Random();
 		int attack = turn.nextInt(10);
 		return attack;
 	}
+	
 	public int getPlayerTurns() {
 		return playerTurns;
+	}
+	
+	public boolean getActiveCombat() {
+		return activeCombat;
 	}
 
 }

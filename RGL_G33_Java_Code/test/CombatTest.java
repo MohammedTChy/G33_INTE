@@ -56,21 +56,48 @@ class CombatTest {
 	}
 	
 	@Test
-	void calculateFinalDamageWithBasicAttack() {
+	void activeCombatFalse() {
+        Man m = new Man(500,100,150);
+        Dragon d = new Dragon(1000, 200, 50);
+        Combat c = new Combat(m, d);
+        
+        c.turn();
+        
+        assertFalse(c.getActiveCombat());
+	}
+	@Test
+	void activeCombatTrue() {
+        Man m = new Man(500,100,150);
+        Dragon d = new Dragon(1000, 200, 50);
+        Combat c = new Combat(m, d);
+        
+        assertTrue(c.getActiveCombat());
+
+	}
+	
+	
+	@Test
+	void InflictDamageWithBasicAttack() {
         Man m = new Man(500,0,150);
         Dragon d = new Dragon(1000, 200, 0);
         Combat c = new Combat(m, d);
         
-        assertEquals(200-150, c.finalDamageValue(c.basicAttack(d), m));
+        int basicAttack = c.basicAttack(d);
+        c.inflictDamage(basicAttack, c.getPlayer());
+        
+        assertEquals(500-50, m.getHitPoints());
 	}
 	
 	@Test
-	void calculateFinalDamageWithCriticalAttack() {
+	void calculateInflictDamageWithCriticalAttack() {
         Man m = new Man(500,0,150);
         Dragon d = new Dragon(1000, 200, 0);
         Combat c = new Combat(m, d);
         
-        assertEquals(2*200-150, c.finalDamageValue(c.criticalAttack(d), m));
+        int criticalAttack = c.criticalAttack(d);
+        c.inflictDamage(criticalAttack, c.getPlayer());
+        
+        assertEquals(500-(200*2-150), m.getHitPoints());
 	}
 	
 	@Test
@@ -79,9 +106,7 @@ class CombatTest {
         Dragon d = new Dragon(1000, 200, 0);
         Combat c = new Combat(m, d);
         
-        int f = c.finalDamageValue(c.basicAttack(d), m);
-        
-        c.inflictDamage(f, m);
+        c.inflictDamage(200, m);
         
         assertEquals(500-(200-150), m.getHitPoints());
 	}
@@ -92,9 +117,8 @@ class CombatTest {
         Dragon d = new Dragon(1000, -100, 0);
         Combat c = new Combat(m, d);
         
-        int f = c.finalDamageValue(c.basicAttack(d), m);
-        
-        c.inflictDamage(f, m);
+        int basicAttack = c.basicAttack(d);
+        c.inflictDamage(basicAttack, c.getPlayer());
         
         assertEquals(500, m.getHitPoints());
 	}
@@ -105,9 +129,7 @@ class CombatTest {
         Dragon d = new Dragon(1000, 0, 100);
         Combat c = new Combat(m, d);
         
-        int f = c.finalDamageValue(c.basicAttack(m), d);
-        
-        c.inflictDamage(f, d);
+        c.inflictDamage(50, d);
         
         assertEquals(1000, d.getHitPoints());
 	}
@@ -119,10 +141,9 @@ class CombatTest {
         Man m = new Man(500, 50, 0);
         Dragon d = new Dragon(1000, 0, -50);
         Combat c = new Combat(m, d);
+
         
-        int f = c.finalDamageValue(c.basicAttack(m), d);
-        
-        c.inflictDamage(f, d);
+        c.inflictDamage(50, d);
         
         assertEquals(900, d.getHitPoints());
 	}
@@ -238,14 +259,14 @@ class CombatTest {
 	
 	@Test
 	void CombatWillResultInRandomCriticalAttacks() {
-        Man m = new Man(500, 500, 1000);
+        Man m = new Man(500, 500, 2000);
         Dragon d = new Dragon(500, 500, 500);
         Combat c = new Combat(m, d);
         
         c.turn();
         
         //man should get criticalAttack eventually
-        //dragon deals 1000 damage at most and will never damage man
+        //dragon deals 1400 damage at most and will never damage man
         
         assertEquals(0,d.getHitPoints());
         assertEquals(500,m.getHitPoints());
@@ -267,7 +288,7 @@ class CombatTest {
 	
 	@Test
 	void valiantKnightSlaysDragon() {
-        Man knight = new Man(500, 500, 150);
+        Man knight = new Man(5000, 500, 150);
         Dragon dragon = new Dragon(5000, 100, 25);
         Combat c = new Combat(knight, dragon);
         
