@@ -3,10 +3,6 @@ import org.junit.jupiter.api.Test;
 
 class CombatTest {
 
-	void test() {
-		fail("Not yet implemented");
-	}
-	
 	@Test
 	void creaturesCanNotStartCombatWithItself() {
         Man m = new Man(500,50,50);

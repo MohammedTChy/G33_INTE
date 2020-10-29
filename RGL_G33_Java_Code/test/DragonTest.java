@@ -27,7 +27,7 @@ class DragonTest {
 
     @Test
     void setNegativeHitPointsThrowsIAE() {
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
+         assertThrows(IllegalArgumentException.class, () -> {
             Dragon m = new Dragon(2000, 200, 92);
             m.setHitPoints(-2000);
         });

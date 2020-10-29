@@ -58,12 +58,11 @@ public class Map {
         if(position.getY()<=0) return false;
         if(position.getX()>width) return false;
         if(position.getY()>breadth) return false;
-        if(checkTile.containsKey(position)==false) return true;
+        if(!checkTile.containsKey(position)) return true;
         Tile tilePosition=checkTile.get(position);
         if(tilePosition.isFire()) return false;
         if(tilePosition.isHills()) return false;
         if(tilePosition.isJangle()) return false;
-        if(tilePosition.isEnemy()) return false;
-        return true;
+        return !tilePosition.isEnemy();
     }
 }

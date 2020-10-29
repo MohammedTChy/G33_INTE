@@ -27,7 +27,7 @@ class ManTest {
 
     @Test
     void setNegativeHitPointsThrowsIAE() {
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
+         assertThrows(IllegalArgumentException.class, () -> {
          Man m = new Man(-500,200,92);
          m.setHitPoints(-2555);
       });
