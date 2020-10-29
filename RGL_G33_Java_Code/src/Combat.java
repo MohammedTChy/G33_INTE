@@ -81,18 +81,25 @@ public class Combat {
 		return 2*attacker.getAttackPower();
 	}
 	
+	/* Commented out because method is now obsolete, was merged with inflictDamage
+	 * 
 	protected int finalDamageValue(int damageBeforeDefense, Creature defender) {
 		int finalDmg = damageBeforeDefense - defender.getDefensePower();
 		if (finalDmg < 0) {
 			finalDmg = 0;
 		}
 		return finalDmg;
-	}
+	} 
+	*/ 
 	
 	protected void inflictDamage(int finalDamageValue, Creature defender) {
 		int currentHealth = defender.getHitPoints();
+		int finalDmg = finalDamageValue - defender.getDefensePower();
+		if (finalDmg < 0) {
+			finalDmg = 0;
+		}
 
-		int finalHealth = currentHealth-finalDamageValue;
+		int finalHealth = currentHealth-finalDmg;
 		if (finalHealth<0) {
 			finalHealth = 0;
 		}
@@ -110,9 +117,9 @@ public class Combat {
 	public void monsterTurn(int number, Creature attacker, Creature defender) {
 
 		monsterTurns++;
-		System.out.println("Monster turns: " + monsterTurns);
+
 		boolean bonusDamage = checkIfDragonSuperAttackAvailable(attacker, monsterTurns);
-		System.out.println("Bonus Damage: " + bonusDamage);
+
 		int damage = 0;
 
 		if (bonusDamage) {
@@ -120,12 +127,10 @@ public class Combat {
 		}
 		if (number <9) {
 			damage += basicAttack(attacker);
-			int finalDamage = finalDamageValue(damage, defender);
-			inflictDamage(finalDamage,defender);
+			inflictDamage(damage,defender);
 		} else if (number <10 && number > 8) {
 			damage += criticalAttack(attacker);
-			int finalDamage = finalDamageValue(damage, defender);
-			inflictDamage(finalDamage,defender);
+			inflictDamage(damage,defender);
 		} else {
 			inflictDamage(damage,defender);
 		}
@@ -137,7 +142,8 @@ public class Combat {
 		//Practically works like monster class, but may now have new implementations
 		//of abilities separate from monsters to choose from.
 		playerTurns++;
-
+		
+		//if statement sets all non critical attacks to be basic attacks
 		if (number>1) {
 			number = 0;
 			}
@@ -145,30 +151,35 @@ public class Combat {
 		switch(number) {
 		case 0:
 			int damage = basicAttack(attacker);
-			int finalDamage = finalDamageValue(damage, defender);
-			inflictDamage(finalDamage,defender);
+			inflictDamage(damage,defender);
 			break;
 		case 1:
 			int criticalDamage = criticalAttack(attacker);
-			int criticalFinalDamage = finalDamageValue(criticalDamage, defender);
-			inflictDamage(criticalFinalDamage,defender);
+			inflictDamage(criticalDamage,defender);
 			break;
 		case 2:
+			//intended opening for player abilities/attacks
+			//cases can be added and represent choices
 			break;
 		default:
 			break;
 		}
-		
-		//more can be added, even non combat effects
+
 		
 	}	
-	public int random() {
+	
+	protected int random() {
 		Random turn = new Random();
 		int attack = turn.nextInt(10);
 		return attack;
 	}
+	
 	public int getPlayerTurns() {
 		return playerTurns;
+	}
+	
+	public boolean getActiveCombat() {
+		return activeCombat;
 	}
 
 }
