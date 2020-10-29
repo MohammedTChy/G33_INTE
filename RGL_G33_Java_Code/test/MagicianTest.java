@@ -111,20 +111,21 @@ class MagicianTest {
     }
 
     @Test
-    void testMagicSpellExistInTheMagicBook(){
+    void testMagicSpellExistInTheMagicBook() {
         Magician gandalf = new Magician(2000, 200, 92, 40);
         Fire m = new Fire(10, 5);
         gandalf.addMagic(m);
-        assertTrue(gandalf.getMagicBook().containsKey("Fire") && gandalf.getMagicBook().get("Fire") != null  );
+        assertTrue(gandalf.getMagicBook().containsKey("Fire") && gandalf.getMagicBook().get("Fire") != null);
     }
+
     @Test
-    void testTwoMagicSpellExistInTheMagicBook(){
+    void testTwoMagicSpellExistInTheMagicBook() {
         Magician gandalf = new Magician(2000, 200, 92, 40);
         Fire m = new Fire(10, 5);
         Frost n = new Frost(6, 8);
         gandalf.addMagic(m);
         gandalf.addMagic(n);
-        assertTrue(gandalf.getMagicBook().containsKey("Fire") && gandalf.getMagicBook().get("Fire") != null && gandalf.getMagicBook().containsKey("Frost") && gandalf.getMagicBook().get("Frost") != null );
+        assertTrue(gandalf.getMagicBook().containsKey("Fire") && gandalf.getMagicBook().get("Fire") != null && gandalf.getMagicBook().containsKey("Frost") && gandalf.getMagicBook().get("Frost") != null);
     }
 
     @Test
