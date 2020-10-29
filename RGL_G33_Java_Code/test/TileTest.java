@@ -119,9 +119,9 @@ class TileTest {
     }
 
     @Test
-    void checkIfOnlyIsTrueIsTrue() {
+    void checkIfOneElementIsTrueOnOneTile() {
         Tile tile=new Tile(new Position(0,0),true,false,false,false,false,false,false);
-        assertTrue(tile.checkIfOnlyIsTrue());
+        assertTrue(tile.checkIfOneElementIsTrueOnOneTile());
     }
 
 }

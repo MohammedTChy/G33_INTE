@@ -18,7 +18,7 @@ class MapTest {
         Map map = new Map(12, 14);
         assertEquals(map.getBreadth(), 14);
     }
-    // TEST TYPE TDD(test driven dev)
+    // TEST TYPE TDD
 
 
     @Test
@@ -33,7 +33,7 @@ class MapTest {
     }
 
     @Test
-// in this test
+
     void tileOutofMapInX() {
         Map map = new Map(10, 10);
         assertThrows(IllegalArgumentException.class, () -> {
@@ -42,7 +42,7 @@ class MapTest {
     }
 
     @Test
-// in this test
+
     void tileOutofMapInY() {
         Map map = new Map(10, 10);
         assertThrows(IllegalArgumentException.class, () -> {
@@ -51,8 +51,8 @@ class MapTest {
     }
 
     @Test
-// in this test TDD , i am expecting if the width is less then 0 , will throw IAE.test has failed .I have written code  in map class,retest.
-    void tileOutofMapInXInNegetive() {
+// TDD , i am expecting if the width is less then 0 , will throw IAE.test has failed .I have written code  in map class,retest.
+    void ifTilePositionIsGivenNegativeForX() {
         Map map = new Map(10, 10);
         assertThrows(IllegalArgumentException.class, () -> {
             map.addTile(new Tile(new Position(-15, 5)));
@@ -60,11 +60,35 @@ class MapTest {
     }
 
     @Test
-// in this test TDD , i am expecting if the breadth is less then 0 , will throw IAE.
-    void tileOutofMapInYInNegetive() {
+//TDD , i am expecting if the breadth is less then 0 , will throw IAE.
+    void ifTilePositionIsGivenNegativeInY() {
         Map map = new Map(10, 10);
         assertThrows(IllegalArgumentException.class, () -> {
             map.addTile(new Tile(new Position(5, -15)));
+        });
+    }
+    @Test
+    void widthNegativeTest() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Map map = new Map(-10, 10);
+        });
+    }
+    @Test
+    void IfWidthZeroOrLessThrowIAE() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Map map = new Map(0, 10);
+        });
+    }
+    @Test
+    void ifBreadthNegativeTest() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Map map = new Map(10, -10);
+        });
+    }
+    @Test
+    void IfBreadthZeroOrLessThrowIAE() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Map map = new Map(10, 0);
         });
     }
 
