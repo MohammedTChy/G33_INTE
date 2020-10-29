@@ -32,8 +32,7 @@ public class Magician extends Creature {
         String magicName = magic.getName();
         if (magicBook.get(magicName) == null) {
             magicBook.put(magic.getName(), magic);
-        }
-        else {
+        } else {
             throw new IllegalStateException("Spell already exists");
         }
 
