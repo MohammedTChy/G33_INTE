@@ -1,14 +1,13 @@
 public class Item {
 
-    //W.I.P idea to but pre-defined potion from the beginging but thats for later stage into the project
-    /*public enum PotionType {
-        Health_Potion, Mana_Potion
-    }*/
+    public enum PotionType {
+        HEALTH
+    }
 
-    private final String potionType; //What kind of potion it is, ex: Health or Mana
+    private final PotionType potionType; //What kind of potion it is, ex: Health or Mana
     private int potionAmmount; //The amount it carries
 
-    public Item(String potionType, int potionAmmount) {
+    public Item(PotionType potionType, int potionAmmount) {
         //If the ammount is below zero, it should not be created at throw an IAE
         if (potionAmmount < 0) {
             throw new IllegalArgumentException("Potion ammount must be 0 or higher" + potionAmmount);
@@ -19,7 +18,7 @@ public class Item {
     }//Item constructor
 
 
-    public String getPotionType() {
+    public PotionType getPotionType() {
         return potionType;
     }//getPotionType
 
@@ -37,7 +36,7 @@ public class Item {
 
     public void usePotion(Creature p, Item i) {
         //This if-equals is a temprorary thing, change it later stage of the project but for now it works if you limit to only Health potion
-        if (i.potionType.equals("Health")) {
+        if (i.potionType.equals(PotionType.HEALTH)) {
             int tempHP = p.getHitPoints(); //HP is brought to a tempHP holder
             int tempAmmount = i.getPotionAmmount();//Pottion ammount is brought to a temp holder
             tempHP += tempAmmount; //Add these two temp holders together

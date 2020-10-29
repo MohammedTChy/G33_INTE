@@ -46,6 +46,7 @@ public abstract class Magic {
 
     //Race, profession and special item can affect manacost
     public void setManaCost(int manaCost) {
+        //Auto adjust manaCost to zero if it drops below zero because of skills/ability/items
         if (manaCost < 0) {
             manaCost = 0;
         }//Auto adjust manaCost to zero if it drops below zero because of skills/ability/items
