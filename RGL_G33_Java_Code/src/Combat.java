@@ -139,15 +139,16 @@ public class Combat {
 
 	public void playerTurn(int number, Creature attacker, Creature defender) {
 		
-		//Practically works like monster class, but may now have new implementations
-		//of abilities separate from monsters to choose from.
 		playerTurns++;
 		
-		//if statement sets all non critical attacks to be basic attacks
+		//if statement sets all non critical attacks to be basic attacks, hence near identical 
+		
 		if (number>1) {
 			number = 0;
 			}
 		
+		//functionality with monsterTurn (criticalDamage on 1 instead of 9), but opens up the ability
+		//to add cases and give players unique abilities separate from monsters. 
 		switch(number) {
 		case 0:
 			int damage = basicAttack(attacker);
