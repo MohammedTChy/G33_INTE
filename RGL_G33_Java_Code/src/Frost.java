@@ -7,6 +7,5 @@ public class Frost extends Magic {
     public Frost(int manaCost, int damage) {
         super(NAME_FROST, manaCost, damage);
         setFrost(true);
-
     }//Frost Constructor
 }//Class Frost
