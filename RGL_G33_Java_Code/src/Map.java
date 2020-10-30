@@ -3,22 +3,24 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class Map {
-    private int width;
-    private int breadth;
+    protected int width;
+    protected int breadth;
     HashSet<Position>checkPosition=new HashSet<>();
     HashMap<Position,Tile>checkTile=new HashMap<>();
     private ArrayList<Tile> tiles=new ArrayList<>();
 
-    public Map(int width, int breadth) {
+    protected Map(int width, int breadth) {
+        if(width<=0) throw new IllegalArgumentException("Width ca not be negative or 0 ");
+        if(breadth<=0) throw new IllegalArgumentException("Breadth ca not be negative or 0 ");
         this.width = width;
         this.breadth = breadth;
     }
 
-    public int getWidth() {
+    protected int getWidth() {
         return width;
     }
 
-    public int getBreadth() {
+    protected int getBreadth() {
         return breadth;
     }
 
@@ -36,7 +38,7 @@ public class Map {
         tiles.add(tile);
     }
 
-    public Position movePosition(Position position,int direction){
+    protected Position movePosition(Position position,int direction){
         Position newPosition;
         if (direction==1){
             newPosition=new Position(position.getX()-1,position.getY());
@@ -53,7 +55,7 @@ public class Map {
             return position;
     }
 
-    public boolean checkPosition(Position position){
+    protected boolean checkPosition(Position position){
         if(position.getX()<=0) return false;
         if(position.getY()<=0) return false;
         if(position.getX()>width) return false;
