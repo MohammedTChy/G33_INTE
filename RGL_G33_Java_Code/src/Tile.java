@@ -18,7 +18,7 @@ public class Tile {
         this.level=level;
         this.life=life;
         this.coordinate=coordinate;
-        //if(!checkIfOnlyIsTrue())
+        if(checkIfOneElementIsTrueOnOneTile()==false)
 
             throw new IllegalArgumentException("Cant place two item in same tiles");
     }
