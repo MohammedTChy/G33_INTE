@@ -7,7 +7,7 @@ public class Combat {
 	private boolean playerTurn;
 	private boolean activeCombat;
 	private int playerTurns;
-	private int monsterTurns;
+	private int totalTurns;
 
 	public Combat(Creature player, Creature monster) { 
         if (player == monster) {
@@ -106,15 +106,16 @@ public class Combat {
 		defender.setHitPoints(finalHealth);
 	}
 
-	private boolean checkIfDragonSuperAttackAvailable(Creature attacker, int monsterTurns) {
-		return attacker instanceof Dragon && monsterTurns == 4 && attacker.getAttackPower() > 0;
+	private boolean checkIfDragonSuperAttackAvailable(Creature attacker, int totalTurns) {
+		return attacker instanceof Dragon && totalTurns == 4 && attacker.getAttackPower() > 0;
 	}
 
 	public void monsterTurn(int number, Creature attacker, Creature defender) {
 
-		monsterTurns++;
+		totalTurns++;
 
-		boolean bonusDamage = checkIfDragonSuperAttackAvailable(attacker, monsterTurns);
+		// Check if super attack is available
+		boolean bonusDamage = checkIfDragonSuperAttackAvailable(attacker, totalTurns);
 
 		int damage = 0;
 

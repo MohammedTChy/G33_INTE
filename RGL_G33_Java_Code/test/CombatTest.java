@@ -139,7 +139,7 @@ class CombatTest {
         Dragon d = new Dragon(1000, 0, -50);
         Combat c = new Combat(m, d);
 
-        int basicAttack = c.basicAttack(d);
+        int basicAttack = c.basicAttack(m);
         c.inflictDamage(basicAttack, d);
         
         assertEquals(900, d.getHitPoints());
@@ -316,7 +316,6 @@ class CombatTest {
         c.playerTurn(1, m, d);
         
         assertEquals(4000,d.getHitPoints());
-
 	}
 	
 	@Test
@@ -350,6 +349,42 @@ class CombatTest {
         c.playerTurn(1, m, d);
         assertEquals(4,c.getPlayerTurns());
 	}
+
+    @Test
+    void testNoSpecialAttackWhenCreatureIsNotDragon() {
+        Man man = new Man(500, 10, 0);
+        Magician magician = new Magician(500, 10, 0, 60);
+        Combat c = new Combat(magician, man);
+
+        c.turnTester(3, 3);
+
+        assertEquals(490, magician.getHitPoints());
+        assertEquals(480, man.getHitPoints());
+    }
+
+    @Test
+    void testDragonNoSpecialAttackWhenAttackPowerIsNegative() {
+        Man m = new Man(500, 10, 0);
+        Dragon d = new Dragon(500, -10, 0);
+        Combat c = new Combat(d, m);
+
+        c.turnTester(9, 3);
+
+        assertEquals(480, d.getHitPoints());
+        assertEquals(500, m.getHitPoints());
+    }
+
+    @Test
+    void testDragonNoSpecialAttackWhenAttackPowerIsZero() {
+        Man m = new Man(500, 10, 0);
+        Dragon d = new Dragon(500, 0, 0);
+        Combat c = new Combat(d, m);
+
+        c.turnTester(9, 3);
+
+        assertEquals(480, d.getHitPoints());
+        assertEquals(500, m.getHitPoints());
+    }
 
     @Test
     void testDragonNoSpecialAttackWhenTotalTurnsAreLessThanFour() {
@@ -389,85 +424,13 @@ class CombatTest {
 
     @Test
     void testDragonSpecialAttackWithCriticalStrike() {
-        Man m = new Man(500, 10, 0);
+        Man m = new Man(500, 20, 0);
         Dragon d = new Dragon(500, 10, 0);
         Combat c = new Combat(m, d);
 
         c.turnTester(9, 10);
 
-        assertEquals(400, d.getHitPoints());
+        assertEquals(300, d.getHitPoints());
         assertEquals(0, m.getHitPoints());
-    }
-
-    @Test
-    void testDragonNoSpecialAttackWithCriticalStrike() {
-            Man m = new Man(500, 10, 0);
-            Dragon d = new Dragon(500, 10, 0);
-            Combat c = new Combat(d, m);
-
-            c.turnTester(9, 3);
-
-            assertEquals(480, d.getHitPoints());
-            assertEquals(460, m.getHitPoints());
-        }
-
-    @Test
-    void testDragonSpecialAttackWithOutCriticalStrike() {
-        Man m = new Man(500, 10, 0);
-        Dragon d = new Dragon(500, 10, 0);
-        Combat c = new Combat(m, d);
-
-        c.turnTester(7, 10);
-
-        assertEquals(450, d.getHitPoints());
-        assertEquals(50, m.getHitPoints());
-    }
-
-    @Test
-    void testDragonNoSpecialAttackWithOutCriticalStrike() {
-        Man m = new Man(500, 10, 0);
-        Dragon d = new Dragon(500, 10, 0);
-        Combat c = new Combat(d, m);
-
-        c.turnTester(7, 3);
-
-        assertEquals(490, d.getHitPoints());
-        assertEquals(480, m.getHitPoints());
-    }
-
-    @Test
-    void testDragonNoSpecialAttackWhenAttackPowerIsNegative() {
-        Man m = new Man(500, 10, 0);
-        Dragon d = new Dragon(500, -10, 0);
-        Combat c = new Combat(d, m);
-
-        c.turnTester(9, 3);
-
-        assertEquals(480, d.getHitPoints());
-        assertEquals(500, m.getHitPoints());
-    }
-
-    @Test
-    void testDragonNoSpecialAttackWhenAttackPowerIsZero() {
-        Man m = new Man(500, 10, 0);
-        Dragon d = new Dragon(500, 0, 0);
-        Combat c = new Combat(d, m);
-
-        c.turnTester(9, 3);
-
-        assertEquals(480, d.getHitPoints());
-        assertEquals(500, m.getHitPoints());
-    }
-
-    @Test
-    void testNoSpecialAttackWhenCreatureIsNotDragon() {
-        Man man = new Man(500, 10, 0);
-        Magician magician = new Magician(500, 10, 0, 60);
-        Combat c = new Combat(magician, man);
-
-        c.turnTester(3, 3);
-
-        assertEquals(490, magician.getHitPoints());
-        assertEquals(480, man.getHitPoints());
     }
 }
