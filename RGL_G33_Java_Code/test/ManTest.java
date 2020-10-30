@@ -66,6 +66,12 @@ class ManTest {
     }
 
     @Test
+    void testGetDefensePowerWhenNegative() {
+        Man m = new Man(1999, 200, -91);
+        assertEquals(-91, m.getDefensePower());
+    }
+
+    @Test
     void testManaIsZero() {
         Man m = new Man(1999, 200, 91);
         assertEquals(0,m.getMana());
@@ -82,12 +88,6 @@ class ManTest {
         Man m = new Man(2000,200,92);
         m.setNewMaxHealth(500);
         assertEquals(3000, m.getMaxHealth());
-    }
-    
-    @Test
-    void testToString() {
-        Man m = new Man(2000, 200, 90);
-        assertEquals("HP: 2000, Attack: 200, Defense: 90", m.toString());
     }
     
     @Test
@@ -180,4 +180,9 @@ class ManTest {
         assertFalse(man.checkIfResistant(new Frost(10, 50)));
     }
 
+    @Test
+    void testToString() {
+        Man m = new Man(2000, 200, 90, Man.SwordType.Iron);
+        assertEquals("HP: 2000, Attack: 215, Defense: 90, Sword: Iron", m.toString());
+    }
 }
