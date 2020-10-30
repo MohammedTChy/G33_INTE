@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class MagicBook {
     //using new List<>() works too, decied to go with ArrayList though
     //added static Magic before hand is possible, did not do it mainly because of not needed to yet
@@ -16,7 +17,7 @@ public class MagicBook {
 
     //Primitivt way of printing it out and see how its formated
     public String printOutArrayList() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         //NOTE at every entry in the Arraylist is added with ", " with the space at the end of the entry, rememeber that
         for (Magic print : magicBook) {
             sb.append(print);

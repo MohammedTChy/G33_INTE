@@ -48,8 +48,6 @@ public class Magician extends Creature {
                 creature.setHitPoints(creature.getHitPoints() - damage);
             }
             setMana(getMana() - manaCost);
-        } else {
-            // not enough mana
         }
     }
 

@@ -29,7 +29,7 @@ class MagicianTest {
     //Hope this works ~Tahmid
     @Test
     void setNegativeHitPointsThrowsIAE() {
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
+         assertThrows(IllegalArgumentException.class, () -> {
             Magician m = new Magician(2000, 200, 92, 40);
             m.setHitPoints(-2000);
         });
@@ -98,7 +98,7 @@ class MagicianTest {
     //Hope this works ~Tahmid
     @Test
     void setNegativeManaThrowsIAE() {
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> {
+         assertThrows(IllegalArgumentException.class, () -> {
             Magician m = new Magician(2000, 200, 92, 40);
             m.setMana(-40);
         });

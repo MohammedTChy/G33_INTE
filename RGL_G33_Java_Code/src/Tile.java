@@ -1,4 +1,5 @@
 public class Tile {
+
     private boolean fire ;
     private boolean hills;
     private boolean jangle;
@@ -17,7 +18,8 @@ public class Tile {
         this.level=level;
         this.life=life;
         this.coordinate=coordinate;
-        if(checkIfOneElementIsTrueOnOneTile()==false)
+        if(!checkIfOnlyIsTrue())
+
             throw new IllegalArgumentException("Cant place two item in same tiles");
     }
     public Tile(Position position)
@@ -32,8 +34,7 @@ public class Tile {
         if(!fire && !hills && !jangle && enemy && !empty && !level && !life) return true;
         if(!fire && !hills && !jangle && !enemy && empty && !level && !life) return true;
         if(!fire && !hills && !jangle && !enemy && !empty && level && !life) return true;
-        if(!fire && !hills && !jangle && !enemy && !empty && !level && life) return true;
-        return false;
+        return !fire && !hills && !jangle && !enemy && !empty && !level && life;
     }
 
     protected boolean isFire() {
