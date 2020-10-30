@@ -25,8 +25,6 @@ class MagicianTest {
         assertEquals(1900, m.getHitPoints());
     }
 
-    // Need to figure out how to write this one
-    //Hope this works ~Tahmid
     @Test
     void setNegativeHitPointsThrowsIAE() {
          assertThrows(IllegalArgumentException.class, () -> {
@@ -105,16 +103,10 @@ class MagicianTest {
     }
 
     @Test
-    void testToString() {
-        Magician m = new Magician(2000, 200, 92, 40);
-        assertEquals("HP: 2000, Attack: 200, Defense: 92, Mana: 40", m.toString());
-    }
-
-    @Test
     void testMagicSpellExistInTheMagicBook() {
         Magician gandalf = new Magician(2000, 200, 92, 40);
         Fire m = new Fire(10, 5);
-        gandalf.addMagic(m);
+        gandalf.addMagicToMagicBook(m);
         assertTrue(gandalf.getMagicBook().containsKey("Fire") && gandalf.getMagicBook().get("Fire") != null);
     }
 
@@ -123,8 +115,8 @@ class MagicianTest {
         Magician gandalf = new Magician(2000, 200, 92, 40);
         Fire m = new Fire(10, 5);
         Frost n = new Frost(6, 8);
-        gandalf.addMagic(m);
-        gandalf.addMagic(n);
+        gandalf.addMagicToMagicBook(m);
+        gandalf.addMagicToMagicBook(n);
         assertTrue(gandalf.getMagicBook().containsKey("Fire") && gandalf.getMagicBook().get("Fire") != null && gandalf.getMagicBook().containsKey("Frost") && gandalf.getMagicBook().get("Frost") != null);
     }
 
@@ -160,7 +152,7 @@ class MagicianTest {
         Man man = new Man(2000, 200, 92, Man.SwordType.Steel);
 
         Magic fire = new Fire(50, 10);
-        magician.addMagic(fire);
+        magician.addMagicToMagicBook(fire);
 
         magician.castMagic(fire.getName(), man);
         assertEquals(1990, man.getHitPoints());
@@ -172,7 +164,7 @@ class MagicianTest {
         Man man = new Man(2000, 200, 92, Man.SwordType.Steel);
 
         Magic frost = new Frost(50, 100);
-        magician.addMagic(frost);
+        magician.addMagicToMagicBook(frost);
 
         magician.castMagic(frost.getName(), man);
         assertEquals(1900, man.getHitPoints());
@@ -198,7 +190,7 @@ class MagicianTest {
         Dragon dragon = new Dragon(2000, 200, 92);
 
         Magic fire = new Fire(50, 100);
-        magician.addMagic(fire);
+        magician.addMagicToMagicBook(fire);
 
         magician.castMagic(fire.getName(), dragon);
         assertEquals(1935, dragon.getHitPoints());
@@ -210,7 +202,7 @@ class MagicianTest {
         Dragon dragon = new Dragon(2000, 200, 92);
 
         Magic frost = new Frost(50, 100);
-        magician.addMagic(frost);
+        magician.addMagicToMagicBook(frost);
 
         magician.castMagic(frost.getName(), dragon);
         assertEquals(1870, dragon.getHitPoints());
@@ -235,7 +227,7 @@ class MagicianTest {
         Magician magician1 = new Magician(2005, 203, 90, 80);
 
         Magic fire = new Fire(50, 100);
-        magician.addMagic(fire);
+        magician.addMagicToMagicBook(fire);
 
         magician.castMagic(fire.getName(), magician1);
         assertEquals(1980, magician1.getHitPoints());
@@ -247,7 +239,7 @@ class MagicianTest {
         Magician magician1 = new Magician(2005, 203, 90, 80);
 
         Magic frost = new Frost(50, 100);
-        magician.addMagic(frost);
+        magician.addMagicToMagicBook(frost);
 
         magician.castMagic(frost.getName(), magician1);
         assertEquals(1980, magician1.getHitPoints());
@@ -259,7 +251,7 @@ class MagicianTest {
         Man man = new Man(2000, 200, 92, Man.SwordType.Steel);
 
         Magic frost = new Frost(50, 100);
-        magician.addMagic(frost);
+        magician.addMagicToMagicBook(frost);
 
         magician.castMagic(frost.getName(), man);
         assertEquals(50, magician.getMana());
@@ -271,7 +263,7 @@ class MagicianTest {
         Man man = new Man(2000, 200, 92, Man.SwordType.Steel);
 
         Magic frost = new Frost(110, 100);
-        magician.addMagic(frost);
+        magician.addMagicToMagicBook(frost);
 
         magician.castMagic(frost.getName(), man);
         assertEquals(2000, magician.getHitPoints());
@@ -283,7 +275,7 @@ class MagicianTest {
         Man man = new Man(2000, 200, 92, Man.SwordType.Steel);
 
         Magic frost = new Frost(110, 100);
-        magician.addMagic(frost);
+        magician.addMagicToMagicBook(frost);
 
         magician.castMagic(frost.getName(), man);
         assertEquals(100, magician.getMana());
@@ -293,7 +285,7 @@ class MagicianTest {
     void testAddMagicToMagicBook() {
         Fire magic = new Fire(30, 20);
         Magician magician = new Magician(2000, 200, 92, 100);
-        magician.addMagic(magic);
+        magician.addMagicToMagicBook(magic);
         assertEquals("Fire", magician.getMagicBook().get(magic.getName()).getName());
     }
 
@@ -301,10 +293,10 @@ class MagicianTest {
     void testMagicAlreadyExistsInBook() {
         Fire magic = new Fire(30, 20);
         Magician magician = new Magician(2000, 200, 92, 100);
-        magician.addMagic(magic);
+        magician.addMagicToMagicBook(magic);
 
         IllegalStateException e = assertThrows(IllegalStateException.class, () -> {
-            magician.addMagic(magic);
+            magician.addMagicToMagicBook(magic);
 
         });
         assertEquals("Spell already exists", e.getMessage());
@@ -316,10 +308,15 @@ class MagicianTest {
         Frost frost = new Frost(40, 30);
 
         Magician magician = new Magician(2000, 200, 92, 100);
-        magician.addMagic(fire);
-        magician.addMagic(frost);
+        magician.addMagicToMagicBook(fire);
+        magician.addMagicToMagicBook(frost);
         assertEquals("Fire", magician.getMagicBook().get(fire.getName()).getName());
         assertEquals("Frost", magician.getMagicBook().get(frost.getName()).getName());
+    }
 
+    @Test
+    void testToString() {
+        Magician m = new Magician(2000, 200, 92, 40);
+        assertEquals("HP: 2000, Attack: 200, Defense: 92, Mana: 40", m.toString());
     }
 }
