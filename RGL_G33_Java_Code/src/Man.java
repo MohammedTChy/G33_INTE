@@ -5,6 +5,7 @@ public class Man extends Creature {
     }
 
     @Override
+    // Resistant to nothing.
     public boolean checkIfResistant(Magic magic) {
         return false;
     }
@@ -15,6 +16,7 @@ public class Man extends Creature {
         super(hitPoints, attackPower, defensePower);
     }
 
+    // One constructor with swordType
     public Man(int hitPoints, int attackPower, int defensePower, SwordType swordType) {
         super(hitPoints, attackPower, defensePower);
         this.swordType = swordType;
@@ -29,6 +31,7 @@ public class Man extends Creature {
     }
 
     @Override
+    // Increases depending on Sword type
     public int getAttackPower() {
         if (swordType != null) {
             return super.getAttackPower() + swordStrength();
@@ -48,6 +51,7 @@ public class Man extends Creature {
             case Mithril:
                 swordStrength = 50;
                 break;
+                // Should never be used
             default:
                 swordStrength = 0;
         }
@@ -61,6 +65,6 @@ public class Man extends Creature {
     @Override
     public String toString() {
         return "HP: " + getHitPoints() +
-                ", Attack: " + getAttackPower() + ", Defense: " + getDefensePower();
+                ", Attack: " + getAttackPower() + ", Defense: " + getDefensePower() + ", Sword: " + getSwordType();
     }
 }
