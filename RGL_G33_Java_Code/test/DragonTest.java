@@ -76,4 +76,10 @@ class DragonTest {
         Dragon dragon = new Dragon(2000, 200, 92);
         assertFalse(dragon.checkIfResistant(new Frost(10, 50)));
     }
+
+    @Test
+    void testToString() {
+        Dragon dragon = new Dragon(2000, 200, 92);
+        assertEquals("HP: 2000, Attack: 200, Defense: 92", dragon.toString());
+    }
 }

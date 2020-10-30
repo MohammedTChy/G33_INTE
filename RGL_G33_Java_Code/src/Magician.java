@@ -3,6 +3,7 @@ import java.util.Map;
 
 public class Magician extends Creature {
 
+    // Should never be able to change dmg but still check dmg value even if object is not instansiated.
     private final static int DRAGON_EXTRA_DMG = 30;
     private final static int MAGICIAN_PENALTY_DMG = 50;
     private int mana;
@@ -15,8 +16,9 @@ public class Magician extends Creature {
     }
 
     @Override
+    // Resistant to all magic
     public boolean checkIfResistant(Magic magic) {
-        return (magic instanceof Frost || magic instanceof Fire);
+        return true;
     }
 
     public int getMana() {
@@ -28,19 +30,18 @@ public class Magician extends Creature {
         this.mana = mana;
     }
 
-    public void addMagic(Magic magic) {
+    // Adding magic if it does not already exist
+    public void addMagicToMagicBook(Magic magic) {
         String magicName = magic.getName();
         if (magicBook.get(magicName) == null) {
             magicBook.put(magic.getName(), magic);
         } else {
             throw new IllegalStateException("Spell already exists");
         }
-
-        //Add the specific class here into the magicBook
     }
 
     private void dealDamage(Creature creature, boolean isResistant, int damage, int manaCost) {
-
+        // Checking that Magician is having enough mana
         if (getMana() >= manaCost) {
             if (isResistant) {
                 creature.setHitPoints(creature.getHitPoints() - damage / 2);
@@ -51,6 +52,7 @@ public class Magician extends Creature {
         }
     }
 
+    // Damaging creature with magic
     public void castMagic(String name, Creature creature) {
         Magic magic = getMagicBook().get(name);
         if (magic != null && creature != null) {
@@ -75,11 +77,6 @@ public class Magician extends Creature {
     public Map<String, Magic> getMagicBook() {
         return magicBook;
     }
-
-    /*public void manaChange(int amount){
-        mana += amount;
-        checkManaNotBelowZero(mana);
-    }*/
 
     private void checkManaNotBelowZero(int mana) {
         if (mana < 0) {
