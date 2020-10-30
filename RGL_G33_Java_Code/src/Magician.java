@@ -52,7 +52,7 @@ public class Magician extends Creature {
         }
     }
 
-    // Damaging creature with magic
+    // Using magic on creature
     public void castMagic(String name, Creature creature) {
         Magic magic = getMagicBook().get(name);
         if (magic != null && creature != null) {
