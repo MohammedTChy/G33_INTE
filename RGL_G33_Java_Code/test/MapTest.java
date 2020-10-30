@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MapTest {
 
 
-    // TEST TYPE Unit test
+
     @Test
     void TestWidth() {
         Map map = new Map(10, 15);
@@ -13,7 +13,7 @@ class MapTest {
     }
 
     @Test
-// just wrote this test.
+
     void TestBreadth() {
         Map map = new Map(12, 14);
         assertEquals(map.getBreadth(), 14);
@@ -51,7 +51,7 @@ class MapTest {
     }
 
     @Test
-// TDD , i am expecting if the width is less then 0 , will throw IAE.test has failed .I have written code  in map class,retest.
+// TDD , i am expecting if the width is less then 0 , will throw IAE.test has failed .testes,written code  in map class,retest.
     void ifTilePositionIsGivenNegativeForX() {
         Map map = new Map(10, 10);
         assertThrows(IllegalArgumentException.class, () -> {
@@ -93,7 +93,7 @@ class MapTest {
     }
 
     @Test
-    void mansSetPositionTest(){
+    void mansSetPositionTestInEmptyPlace(){ // changed name from mansPositionTest().
         Map map = new Map(3,5);
         map.addTile(new Tile(new Position(1,2),true,false,false,false,false,false,false));
         map.addTile(new Tile(new Position(1,3),false,true,false,false,false,false,false));
@@ -101,7 +101,64 @@ class MapTest {
         map.addTile(new Tile(new Position(3,2),false,true,false,false,false,false,false));
         map.addTile(new Tile(new Position(3,3),false,false,true,false,false,false,false));
         map.addTile(new Tile(new Position(3,5),false,false,false,false,false,true,false));
-        assertTrue(map.checkPosition(new Position(1,1)));
+        assertTrue(map.checkPosition(new Position(1,1)),"empty place can be accesed");
+    }
+    @Test
+    void mansSetPositionTestInFire(){ //written now.
+        Map map = new Map(3,5);
+        map.addTile(new Tile(new Position(1,2),true,false,false,false,false,false,false));
+        map.addTile(new Tile(new Position(1,3),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(2,3),false,false,false,false,false,false,true));
+        map.addTile(new Tile(new Position(3,2),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(3,3),false,false,true,false,false,false,false));
+        map.addTile(new Tile(new Position(3,5),false,false,false,false,false,true,false));
+        assertFalse(map.checkPosition(new Position(1,2)),"fire is true here");
+    }
+    @Test
+    void mansSetPositionTestInHill(){
+        Map map = new Map(3,5);
+        map.addTile(new Tile(new Position(1,2),true,false,false,false,false,false,false));
+        map.addTile(new Tile(new Position(1,3),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(2,3),false,false,false,false,false,false,true));
+        map.addTile(new Tile(new Position(3,2),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(3,3),false,false,true,false,false,false,false));
+        map.addTile(new Tile(new Position(3,5),false,false,false,false,false,true,false));
+        assertFalse(map.checkPosition(new Position(1,3)),"hill is true here");
+        assertFalse(map.checkPosition(new Position(3,2)),"hill is true here");
+    }
+    @Test
+    void mansSetPositionTestInEnemy(){
+        Map map = new Map(3,5);
+        map.addTile(new Tile(new Position(1,2),true,false,false,false,false,false,false));
+        map.addTile(new Tile(new Position(1,3),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(2,3),false,false,false,false,false,false,true));
+        map.addTile(new Tile(new Position(3,2),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(3,3),false,false,true,false,false,false,false));
+        map.addTile(new Tile(new Position(3,5),false,false,false,false,false,true,false));
+        map.addTile(new Tile(new Position(3,4),false,false,false,true,false,false,false));
+        assertFalse(map.checkPosition(new Position(3,4)),"enemy is here");
+    }
+    @Test
+    void mansSetPositionTestInJungle(){
+        Map map = new Map(3,5);
+        map.addTile(new Tile(new Position(1,2),true,false,false,false,false,false,false));
+        map.addTile(new Tile(new Position(1,3),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(2,3),false,false,false,false,false,false,true));
+        map.addTile(new Tile(new Position(3,2),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(3,3),false,false,true,false,false,false,false));
+        map.addTile(new Tile(new Position(3,5),false,false,false,false,false,true,false));
+        assertFalse(map.checkPosition(new Position(3,3)),"jungle is here");
+    }
+    @Test
+    void mansSetPositionTestInLife(){
+        Map map = new Map(3,5);
+        map.addTile(new Tile(new Position(1,2),true,false,false,false,false,false,false));
+        map.addTile(new Tile(new Position(1,3),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(2,3),false,false,false,false,false,false,true));
+        map.addTile(new Tile(new Position(3,2),false,true,false,false,false,false,false));
+        map.addTile(new Tile(new Position(3,3),false,false,true,false,false,false,false));
+        map.addTile(new Tile(new Position(3,5),false,false,false,false,false,true,false));
+        assertTrue(map.checkPosition(new Position(2,3)),"life can be accesed ");
     }
 
     @Test

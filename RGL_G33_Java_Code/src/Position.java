@@ -5,18 +5,18 @@ public class Position {
     private int x;
     private int y;
 
-    protected Position(int x, int y) {//made protected
+    protected Position(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
     protected int getX() {
         return x;
-    }//made protected
+    }
 
     protected int getY() {
         return y;
-    }//made protected
+    }
 
     @Override
     public boolean equals(Object o) {
