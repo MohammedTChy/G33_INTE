@@ -70,7 +70,7 @@ public class Combat {
 				playerTurn = false;
 			}
 			totalTurns--;
-		} while (activeCombat = totalTurns > 0);
+		} while (activeCombat = true && totalTurns>0);
 	}
 
 	protected int basicAttack(Creature attacker) {
@@ -107,7 +107,11 @@ public class Combat {
 	}
 
 	private boolean checkIfDragonSuperAttackAvailable(Creature attacker, int monsterTurns) {
-		return attacker instanceof Dragon && monsterTurns == 4 && attacker.getAttackPower() > 0;
+		if (attacker instanceof Dragon && monsterTurns == 4 && attacker.getAttackPower() >0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public void monsterTurn(int number, Creature attacker, Creature defender) {
@@ -124,7 +128,7 @@ public class Combat {
 		if (number <9) {
 			damage += basicAttack(attacker);
 			inflictDamage(damage,defender);
-		} else if (number == 9) {
+		} else if (number <10 && number > 8) {
 			damage += criticalAttack(attacker);
 			inflictDamage(damage,defender);
 		} else {
@@ -167,7 +171,8 @@ public class Combat {
 	
 	protected int random() {
 		Random turn = new Random();
-		return turn.nextInt(10);
+		int attack = turn.nextInt(10);
+		return attack;
 	}
 	
 	public int getPlayerTurns() {

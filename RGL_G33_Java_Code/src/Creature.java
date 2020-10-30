@@ -63,7 +63,11 @@ public abstract class Creature {
     }
 
     private void checkAttackPowerNotBelowZero(int attack) {
-        attackPower = Math.max(attack, 0);
+        if (attack < 0) {
+            attackPower = 0;
+        } else {
+            attackPower = attack;
+        }
     }
 
     public int getDefensePower() {

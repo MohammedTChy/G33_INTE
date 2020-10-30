@@ -8,7 +8,7 @@ class TileTest {
     @Test
     void TestExistenceOfFire() {
         Tile tile1=new Tile(new Position(0,0),true,false,false,false,false,false,false);
-        assertTrue(tile1.isFire(), "Fire should be on this place");
+        assertTrue(tile1.isFire(),String.format("Fire should be on this place"));
         assertFalse(tile1.isHills());
         assertFalse(tile1.isJangle());
         assertFalse(tile1.isEnemy());

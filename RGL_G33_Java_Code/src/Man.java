@@ -1,7 +1,9 @@
 public class Man extends Creature {
 
+    private int mana = 0;
+
     public enum SwordType {
-        Iron, Steel, Mithril
+        Iron, Steel, Mithril;
     }
 
     @Override
@@ -55,7 +57,7 @@ public class Man extends Creature {
     }
 
     public int getMana() {
-        return 0;
+        return mana;
     }
 
     @Override
