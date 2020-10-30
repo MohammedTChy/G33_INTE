@@ -1,5 +1,4 @@
 public class Tile {
-
     private boolean fire ;
     private boolean hills;
     private boolean jangle;
@@ -27,19 +26,20 @@ public class Tile {
         this(position,false,false,false,false,true,false,false);
     }
 
-   protected boolean checkIfOneElementIsTrueOnOneTile() {//made protected
+    protected boolean checkIfOneElementIsTrueOnOneTile() {//made protected
         if(fire && !hills && !jangle && !enemy && !empty && !level && !life) return true;
         if(!fire && hills && !jangle && !enemy && !empty && !level && !life) return true;
         if(!fire && !hills && jangle && !enemy && !empty && !level && !life) return true;
         if(!fire && !hills && !jangle && enemy && !empty && !level && !life) return true;
         if(!fire && !hills && !jangle && !enemy && empty && !level && !life) return true;
         if(!fire && !hills && !jangle && !enemy && !empty && level && !life) return true;
-        return !fire && !hills && !jangle && !enemy && !empty && !level && life;
+        if(!fire && !hills && !jangle && !enemy && !empty && !level && life) return true;
+        return false;
     }
 
     protected boolean isFire() {
         return fire;
-    }//made protected underneath 
+    }//made protected underneath
 
     protected boolean isHills() {
         return hills;
