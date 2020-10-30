@@ -356,9 +356,9 @@ class CombatTest {
         Magician magician = new Magician(500, 10, 0, 60);
         Combat c = new Combat(magician, man);
 
-        c.turnTester(3, 3);
+        c.turnTester(3, 4);
 
-        assertEquals(490, magician.getHitPoints());
+        assertEquals(480, magician.getHitPoints());
         assertEquals(480, man.getHitPoints());
     }
 
