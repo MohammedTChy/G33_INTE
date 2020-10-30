@@ -416,9 +416,9 @@ class CombatTest {
         Dragon d = new Dragon(500, 10, 0);
         Combat c = new Combat(m, d);
 
-        c.turnTester(7, 5);
+        c.turnTester(7, 4);
 
-        assertEquals(470, d.getHitPoints());
+        assertEquals(480, d.getHitPoints());
         assertEquals(80, m.getHitPoints());
     }
 
