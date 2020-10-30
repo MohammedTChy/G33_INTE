@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TileTest {
 
-        // TEST TYPE normal unit test
     @Test
     void TestExistenceOfFire() {
         Tile tile1=new Tile(new Position(0,0),true,false,false,false,false,false,false);
